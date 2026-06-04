@@ -1,0 +1,5 @@
+# Force LF for all files
+* text=auto eol=lf
+
+# Workflow files must always be LF
+.github/workflows/*.yml text eol=lf
