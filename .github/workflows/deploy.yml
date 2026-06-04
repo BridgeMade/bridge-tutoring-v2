@@ -23,7 +23,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build
+      - name: Build (OpenNext Cloudflare)
         run: npx --yes opennextjs-cloudflare build
         env:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
@@ -34,9 +34,17 @@ jobs:
           WHATSAPP_RECIPIENT_NUMBER: ${{ secrets.WHATSAPP_RECIPIENT_NUMBER }}
           NEXT_PUBLIC_GA_ID: ${{ secrets.NEXT_PUBLIC_GA_ID }}
 
-      - name: Deploy
+      - name: Bundle worker into assets
+        run: |
+          cp .open-next/worker.js .open-next/assets/_worker.js
+          cp -r .open-next/cloudflare .open-next/assets/cloudflare
+          cp -r .open-next/middleware .open-next/assets/middleware
+          cp -r .open-next/server-functions .open-next/assets/server-functions
+          cp -r .open-next/.build .open-next/assets/.build
+
+      - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy .open-next/assets --project-name=bridge-tutoring-v2
+          command: pages deploy .open-next/assets --project-name=bridge-tutoring-v2 --commit-dirty=true

@@ -7,7 +7,7 @@
     "build": "next build",
     "build:cf": "opennextjs-cloudflare build",
     "preview": "opennextjs-cloudflare preview",
-    "deploy": "opennextjs-cloudflare deploy",
+    "deploy": "powershell -File scripts/deploy.ps1",
     "start": "next start",
     "lint": "eslint"
   },
