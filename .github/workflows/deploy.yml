@@ -24,7 +24,7 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: npx opennextjs-cloudflare build
+        run: npx --yes opennextjs-cloudflare build
         env:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           RESEND_FROM_EMAIL: ${{ secrets.RESEND_FROM_EMAIL }}
