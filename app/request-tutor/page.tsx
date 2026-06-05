@@ -69,7 +69,7 @@ export default function RequestTutorPage() {
           </p>
           <a
             href="/"
-            className="mt-8 inline-flex items-center justify-center rounded-xl bg-coral-600 text-white font-semibold px-6 py-3 hover:bg-coral-700 transition-colors"
+            className="mt-8 inline-flex items-center justify-center rounded-xl bg-coral-400 text-white font-semibold px-6 py-3 hover:bg-coral-500 transition-colors"
           >
             Back to home
           </a>
@@ -81,7 +81,7 @@ export default function RequestTutorPage() {
   return (
     <div className="min-h-screen flex flex-col lg:flex-row">
       {/* Left panel */}
-      <div className="bg-coral-700 lg:w-2/5 lg:min-h-screen">
+      <div className="bg-coral-400 lg:w-2/5 lg:min-h-screen">
         <SidePanel step={step} />
       </div>
 

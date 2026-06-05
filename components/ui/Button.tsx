@@ -11,17 +11,17 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variantClasses: Record<Variant, Record<ColorScheme, string>> = {
   primary: {
-    coral: "bg-coral-600 text-white hover:bg-coral-700 focus-visible:ring-coral-500",
+    coral: "bg-coral-400 text-white hover:bg-coral-500 focus-visible:ring-coral-500",
     purple:
       "bg-purple-600 text-white hover:bg-purple-700 focus-visible:ring-purple-500",
   },
   secondary: {
-    coral: "border border-coral-600 text-coral-700 hover:bg-coral-50 focus-visible:ring-coral-500",
+    coral: "border border-coral-400 text-coral-500 hover:bg-coral-50 focus-visible:ring-coral-500",
     purple:
       "border border-purple-600 text-purple-700 hover:bg-purple-50 focus-visible:ring-purple-500",
   },
   ghost: {
-    coral: "text-coral-700 hover:bg-coral-50 focus-visible:ring-coral-500",
+    coral: "text-coral-500 hover:bg-coral-50 focus-visible:ring-coral-500",
     purple: "text-purple-700 hover:bg-purple-50 focus-visible:ring-purple-500",
   },
 };

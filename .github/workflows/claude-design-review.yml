@@ -1,0 +1,29 @@
+name: Claude Design Review
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+    paths:
+      - '**/*.tsx'
+      - '**/*.jsx'
+      - '**/*.css'
+
+jobs:
+  design-review:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run Claude Design Review
+        uses: anthropics/claude-code-action@beta
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: |
+            Please perform a design and accessibility review of the frontend changes
+            in this PR using the criteria in .claude/skills/design-review/SKILL.md.
+            Post findings as a PR comment.
