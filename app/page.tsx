@@ -80,9 +80,9 @@ export default function HomePage() {
       {/* Hero */}
       <section className="bg-white overflow-hidden">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row lg:items-center lg:gap-8 py-16 sm:py-20 lg:py-24">
+          <div className="flex flex-col-reverse lg:flex-row lg:items-center lg:gap-8 py-16 sm:py-20 lg:py-24">
             {/* Text */}
-            <div className="lg:flex-1 lg:max-w-[520px]">
+            <div className="lg:flex-1 lg:max-w-[520px] pt-8 lg:pt-0">
               <h1 className="text-5xl sm:text-6xl font-black leading-[1.05] tracking-tight text-neutral-900">
                 Tutor support that builds confidence and improves results.
               </h1>
@@ -124,7 +124,7 @@ export default function HomePage() {
             </div>
 
             {/* Mobile image */}
-            <div className="lg:hidden flex justify-center pt-10 relative min-h-[320px]">
+            <div className="lg:hidden flex justify-center relative min-h-[280px] sm:min-h-[340px]">
               <svg viewBox="0 0 500 500" className="absolute w-[320px] h-[320px] text-coral-400" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path d="M390,220 C415,275 420,345 385,395 C350,445 280,465 215,460 C150,455 85,428 52,378 C19,328 18,255 38,192 C58,129 100,76 158,50 C216,24 290,24 348,58 C406,92 365,165 390,220Z" />
               </svg>
