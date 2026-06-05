@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export function Navbar() {
@@ -5,11 +6,14 @@ export function Navbar() {
     <header className="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-neutral-100">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
-          <Link
-            href="/"
-            className="text-xl font-bold tracking-tight text-coral-500"
-          >
-            Bridge
+          <Link href="/">
+            <Image
+              src="/Bridge Tutoring Logo.svg"
+              alt="Bridge Tutoring"
+              width={156}
+              height={52}
+              className="h-12 w-auto"
+            />
           </Link>
           <nav className="flex items-center gap-2 sm:gap-4">
             <Link
