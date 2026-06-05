@@ -43,9 +43,6 @@ jobs:
           cp -r .open-next/middleware .open-next/assets/middleware
           cp -r .open-next/server-functions .open-next/assets/server-functions
           cp -r .open-next/.build .open-next/assets/.build
-          echo "=== assets root ===" && ls .open-next/assets/
-          echo "=== _next ===" && ls .open-next/assets/_next/ || echo "no _next dir"
-          echo "=== _next/static ===" && ls .open-next/assets/_next/static/ || echo "no static dir"
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
