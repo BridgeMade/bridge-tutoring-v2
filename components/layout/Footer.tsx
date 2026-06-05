@@ -6,7 +6,7 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-3">
           <div>
-            <span className="text-lg font-bold text-teal-700">Bridge</span>
+            <span className="text-lg font-bold text-coral-700">Bridge</span>
             <p className="mt-2 text-sm text-neutral-500 leading-relaxed">
               Hand-picked tutors in Pretoria and Johannesburg. We do the
               matching — you focus on results.
@@ -20,7 +20,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/request-tutor"
-                  className="hover:text-teal-700 transition-colors"
+                  className="hover:text-coral-700 transition-colors"
                 >
                   Find a tutor
                 </Link>
@@ -28,7 +28,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/become-tutor"
-                  className="hover:text-teal-700 transition-colors"
+                  className="hover:text-coral-700 transition-colors"
                 >
                   Become a tutor
                 </Link>
@@ -43,7 +43,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/privacy"
-                  className="hover:text-teal-700 transition-colors"
+                  className="hover:text-coral-700 transition-colors"
                 >
                   Privacy policy
                 </Link>

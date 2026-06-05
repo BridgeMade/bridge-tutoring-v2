@@ -52,8 +52,8 @@ export function Step4({ onNext, onBack }: Props) {
                 className={[
                   "rounded-xl border px-5 py-4 text-left text-sm font-medium transition-colors",
                   field.value === o.value
-                    ? "bg-teal-600 border-teal-600 text-white"
-                    : "bg-white border-neutral-300 text-neutral-700 hover:border-teal-400",
+                    ? "bg-coral-600 border-coral-600 text-white"
+                    : "bg-white border-neutral-300 text-neutral-700 hover:border-coral-400",
                 ].join(" ")}
               >
                 {o.label}
@@ -66,10 +66,10 @@ export function Step4({ onNext, onBack }: Props) {
         <p className="text-xs text-red-500">{errors.goal.message}</p>
       )}
       <div className="flex gap-3 pt-2">
-        <Button variant="ghost" scheme="teal" onClick={onBack} type="button">
+        <Button variant="ghost" scheme="coral" onClick={onBack} type="button">
           Back
         </Button>
-        <Button scheme="teal" onClick={handleNext} type="button">
+        <Button scheme="coral" onClick={handleNext} type="button">
           Continue
         </Button>
       </div>

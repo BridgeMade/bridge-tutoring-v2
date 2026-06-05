@@ -41,12 +41,12 @@ export function SidePanel({ step }: SidePanelProps) {
           <h2 className="text-2xl sm:text-3xl font-bold text-white leading-snug">
             {copy.heading}
           </h2>
-          <p className="mt-4 text-teal-100 text-base leading-relaxed">
+          <p className="mt-4 text-coral-100 text-base leading-relaxed">
             {copy.body}
           </p>
         </div>
       </div>
-      <div className="mt-10 text-teal-200 text-xs">
+      <div className="mt-10 text-coral-200 text-xs">
         Your information is safe with us. We comply with POPIA.
       </div>
     </div>

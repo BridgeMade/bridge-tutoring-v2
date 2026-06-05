@@ -53,29 +53,29 @@ export default function HomePage() {
       <Navbar />
 
       {/* Hero */}
-      <section className="bg-teal-700 text-white py-20 sm:py-28">
+      <section className="bg-coral-700 text-white py-20 sm:py-28">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl">
-            <p className="text-teal-200 text-sm font-semibold uppercase tracking-widest mb-4">
+            <p className="text-coral-200 text-sm font-semibold uppercase tracking-widest mb-4">
               Pretoria &amp; Johannesburg
             </p>
             <h1 className="text-4xl sm:text-5xl font-bold leading-tight tracking-tight">
               Your child deserves a tutor who actually gets them.
             </h1>
-            <p className="mt-6 text-lg text-teal-100 leading-relaxed max-w-xl">
+            <p className="mt-6 text-lg text-coral-100 leading-relaxed max-w-xl">
               Bridge hand-picks the right tutor for your child — no algorithms,
               no guessing. Just real people making real matches.
             </p>
             <div className="mt-10 flex flex-col sm:flex-row gap-4">
               <Link
                 href="/request-tutor"
-                className="inline-flex items-center justify-center rounded-xl bg-white text-teal-700 font-semibold px-8 py-4 text-base hover:bg-teal-50 transition-colors"
+                className="inline-flex items-center justify-center rounded-xl bg-white text-coral-700 font-semibold px-8 py-4 text-base hover:bg-coral-50 transition-colors"
               >
                 Find a tutor
               </Link>
               <Link
                 href="/become-tutor"
-                className="inline-flex items-center justify-center rounded-xl border border-teal-400 text-white font-semibold px-8 py-4 text-base hover:bg-teal-600 transition-colors"
+                className="inline-flex items-center justify-center rounded-xl border border-coral-400 text-white font-semibold px-8 py-4 text-base hover:bg-coral-600 transition-colors"
               >
                 Become a tutor
               </Link>
@@ -85,20 +85,20 @@ export default function HomePage() {
       </section>
 
       {/* Trust bar */}
-      <section className="bg-teal-800 text-teal-100 py-4">
+      <section className="bg-coral-800 text-coral-100 py-4">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <ul className="flex flex-wrap items-center gap-x-8 gap-y-2 text-sm font-medium">
             <li className="flex items-center gap-2">
-              <span className="text-teal-300">✓</span> Human-matched, not algorithm-matched
+              <span className="text-coral-300">✓</span> Human-matched, not algorithm-matched
             </li>
             <li className="flex items-center gap-2">
-              <span className="text-teal-300">✓</span> Pretoria &amp; Johannesburg
+              <span className="text-coral-300">✓</span> Pretoria &amp; Johannesburg
             </li>
             <li className="flex items-center gap-2">
-              <span className="text-teal-300">✓</span> Hear back within 24 hours
+              <span className="text-coral-300">✓</span> Hear back within 24 hours
             </li>
             <li className="flex items-center gap-2">
-              <span className="text-teal-300">✓</span> In-person &amp; online
+              <span className="text-coral-300">✓</span> In-person &amp; online
             </li>
           </ul>
         </div>
@@ -119,9 +119,9 @@ export default function HomePage() {
             {steps.map((step) => (
               <div
                 key={step.number}
-                className="rounded-2xl bg-teal-50 p-8"
+                className="rounded-2xl bg-coral-50 p-8"
               >
-                <span className="text-3xl font-bold text-teal-300">
+                <span className="text-3xl font-bold text-coral-300">
                   {step.number}
                 </span>
                 <h3 className="mt-4 text-lg font-semibold text-neutral-900">
@@ -136,7 +136,7 @@ export default function HomePage() {
           <div className="mt-10 text-center">
             <Link
               href="/request-tutor"
-              className="inline-flex items-center justify-center rounded-xl bg-teal-600 text-white font-semibold px-8 py-4 text-base hover:bg-teal-700 transition-colors"
+              className="inline-flex items-center justify-center rounded-xl bg-coral-600 text-white font-semibold px-8 py-4 text-base hover:bg-coral-700 transition-colors"
             >
               Request a tutor now
             </Link>
@@ -164,7 +164,7 @@ export default function HomePage() {
                 {s}
               </span>
             ))}
-            <span className="rounded-full bg-teal-600 text-white px-5 py-2 text-sm font-medium shadow-sm">
+            <span className="rounded-full bg-coral-600 text-white px-5 py-2 text-sm font-medium shadow-sm">
               + many more
             </span>
           </div>

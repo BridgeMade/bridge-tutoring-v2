@@ -62,7 +62,7 @@ export function Step6({ onBack, onSubmit, loading }: Props) {
       </div>
       <p className="text-xs text-neutral-400">
         By submitting you agree to our{" "}
-        <a href="/privacy" className="underline hover:text-teal-600">
+        <a href="/privacy" className="underline hover:text-coral-600">
           privacy policy
         </a>
         . We will never share your details without your consent.
@@ -70,14 +70,14 @@ export function Step6({ onBack, onSubmit, loading }: Props) {
       <div className="flex gap-3 pt-2">
         <Button
           variant="ghost"
-          scheme="teal"
+          scheme="coral"
           onClick={onBack}
           type="button"
           disabled={loading}
         >
           Back
         </Button>
-        <Button scheme="teal" onClick={onSubmit} loading={loading} type="button">
+        <Button scheme="coral" onClick={onSubmit} loading={loading} type="button">
           Submit request
         </Button>
       </div>

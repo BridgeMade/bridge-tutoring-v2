@@ -1,7 +1,7 @@
 import { ButtonHTMLAttributes, forwardRef } from "react";
 
 type Variant = "primary" | "secondary" | "ghost";
-type ColorScheme = "teal" | "purple";
+type ColorScheme = "coral" | "purple";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: Variant;
@@ -11,17 +11,17 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variantClasses: Record<Variant, Record<ColorScheme, string>> = {
   primary: {
-    teal: "bg-teal-600 text-white hover:bg-teal-700 focus-visible:ring-teal-500",
+    coral: "bg-coral-600 text-white hover:bg-coral-700 focus-visible:ring-coral-500",
     purple:
       "bg-purple-600 text-white hover:bg-purple-700 focus-visible:ring-purple-500",
   },
   secondary: {
-    teal: "border border-teal-600 text-teal-700 hover:bg-teal-50 focus-visible:ring-teal-500",
+    coral: "border border-coral-600 text-coral-700 hover:bg-coral-50 focus-visible:ring-coral-500",
     purple:
       "border border-purple-600 text-purple-700 hover:bg-purple-50 focus-visible:ring-purple-500",
   },
   ghost: {
-    teal: "text-teal-700 hover:bg-teal-50 focus-visible:ring-teal-500",
+    coral: "text-coral-700 hover:bg-coral-50 focus-visible:ring-coral-500",
     purple: "text-purple-700 hover:bg-purple-50 focus-visible:ring-purple-500",
   },
 };
@@ -30,7 +30,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
       variant = "primary",
-      scheme = "teal",
+      scheme = "coral",
       loading = false,
       disabled,
       className = "",

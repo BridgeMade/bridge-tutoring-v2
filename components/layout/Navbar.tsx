@@ -7,7 +7,7 @@ export function Navbar() {
         <div className="flex h-16 items-center justify-between">
           <Link
             href="/"
-            className="text-xl font-bold tracking-tight text-teal-700"
+            className="text-xl font-bold tracking-tight text-coral-700"
           >
             Bridge
           </Link>
@@ -20,7 +20,7 @@ export function Navbar() {
             </Link>
             <Link
               href="/request-tutor"
-              className="text-sm font-semibold bg-teal-600 text-white px-4 py-2 rounded-xl hover:bg-teal-700 transition-colors"
+              className="text-sm font-semibold bg-coral-600 text-white px-4 py-2 rounded-xl hover:bg-coral-700 transition-colors"
             >
               Find a tutor
             </Link>

@@ -19,14 +19,14 @@ function ChipGroup({
   options: string[];
   value: string[];
   onChange: (v: string[]) => void;
-  scheme: "teal" | "purple";
+  scheme: "coral" | "purple";
 }) {
   const active =
     scheme === "purple"
       ? "bg-purple-600 border-purple-600 text-white"
-      : "bg-teal-600 border-teal-600 text-white";
+      : "bg-coral-600 border-coral-600 text-white";
   const hover =
-    scheme === "purple" ? "hover:border-purple-400" : "hover:border-teal-400";
+    scheme === "purple" ? "hover:border-purple-400" : "hover:border-coral-400";
 
   return (
     <div className="flex flex-wrap gap-2">

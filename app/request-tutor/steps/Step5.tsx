@@ -48,10 +48,10 @@ export function Step5({ onNext, onBack }: Props) {
         {...register("area", { required: "Please select your area" })}
       />
       <div className="flex gap-3 pt-2">
-        <Button variant="ghost" scheme="teal" onClick={onBack} type="button">
+        <Button variant="ghost" scheme="coral" onClick={onBack} type="button">
           Back
         </Button>
-        <Button scheme="teal" onClick={handleNext} type="button">
+        <Button scheme="coral" onClick={handleNext} type="button">
           Review request
         </Button>
       </div>

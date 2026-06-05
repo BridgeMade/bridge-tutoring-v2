@@ -117,7 +117,7 @@ export default function PrivacyPage() {
               at{" "}
               <a
                 href="mailto:privacy@bridgetutoring.co.za"
-                className="text-teal-600 underline"
+                className="text-coral-600 underline"
               >
                 privacy@bridgetutoring.co.za
               </a>

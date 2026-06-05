@@ -26,7 +26,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             "disabled:bg-neutral-100 disabled:cursor-not-allowed",
             error
               ? "border-red-400 focus:ring-red-400"
-              : "border-neutral-300 focus:ring-teal-500",
+              : "border-neutral-300 focus:ring-coral-500",
             className,
           ].join(" ")}
           {...props}

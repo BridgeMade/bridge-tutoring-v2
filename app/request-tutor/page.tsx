@@ -54,7 +54,7 @@ export default function RequestTutorPage() {
 
   if (submitted) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-teal-50 px-4">
+      <div className="min-h-screen flex items-center justify-center bg-coral-50 px-4">
         <div className="max-w-md w-full text-center bg-white rounded-2xl shadow-sm p-10">
           <div className="text-4xl mb-4">🎉</div>
           <h1 className="text-2xl font-bold text-neutral-900">
@@ -69,7 +69,7 @@ export default function RequestTutorPage() {
           </p>
           <a
             href="/"
-            className="mt-8 inline-flex items-center justify-center rounded-xl bg-teal-600 text-white font-semibold px-6 py-3 hover:bg-teal-700 transition-colors"
+            className="mt-8 inline-flex items-center justify-center rounded-xl bg-coral-600 text-white font-semibold px-6 py-3 hover:bg-coral-700 transition-colors"
           >
             Back to home
           </a>
@@ -81,7 +81,7 @@ export default function RequestTutorPage() {
   return (
     <div className="min-h-screen flex flex-col lg:flex-row">
       {/* Left panel */}
-      <div className="bg-teal-700 lg:w-2/5 lg:min-h-screen">
+      <div className="bg-coral-700 lg:w-2/5 lg:min-h-screen">
         <SidePanel step={step} />
       </div>
 

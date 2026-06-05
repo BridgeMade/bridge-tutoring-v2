@@ -48,13 +48,13 @@ export function Step2({ onNext, onBack }: Props) {
       <div className="flex gap-3 pt-2">
         <Button
           variant="ghost"
-          scheme="teal"
+          scheme="coral"
           onClick={onBack}
           type="button"
         >
           Back
         </Button>
-        <Button scheme="teal" onClick={handleNext} type="button">
+        <Button scheme="coral" onClick={handleNext} type="button">
           Continue
         </Button>
       </div>

@@ -62,7 +62,7 @@ export function Step1({ onNext }: Props) {
         })}
       />
       <div className="pt-2">
-        <Button scheme="teal" className="w-full sm:w-auto" onClick={handleNext}>
+        <Button scheme="coral" className="w-full sm:w-auto" onClick={handleNext}>
           Continue
         </Button>
       </div>
