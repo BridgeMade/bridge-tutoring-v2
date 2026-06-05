@@ -1,3 +1,0 @@
-export const production = {"RESEND_API_KEY":"re_LWyNQWck_6895RvfPazkmwm27ZvyvTgeR","RESEND_FROM_EMAIL":"Bridge <noreply@bridgetutoring.co.za>","NOTIFY_EMAIL":"support@bridgetutoring.co.za","WHATSAPP_PHONE_NUMBER_ID":"","WHATSAPP_ACCESS_TOKEN":"","WHATSAPP_RECIPIENT_NUMBER":"","NEXT_PUBLIC_GA_ID":"G-2X5RZVJ3WV"};
-export const development = {"RESEND_API_KEY":"re_LWyNQWck_6895RvfPazkmwm27ZvyvTgeR","RESEND_FROM_EMAIL":"Bridge <noreply@bridgetutoring.co.za>","NOTIFY_EMAIL":"support@bridgetutoring.co.za","WHATSAPP_PHONE_NUMBER_ID":"","WHATSAPP_ACCESS_TOKEN":"","WHATSAPP_RECIPIENT_NUMBER":"","NEXT_PUBLIC_GA_ID":"G-2X5RZVJ3WV"};
-export const test = {};

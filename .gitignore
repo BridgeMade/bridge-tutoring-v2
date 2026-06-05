@@ -40,6 +40,13 @@ CLAUDE.local.md
 # vercel
 .vercel
 
+# OpenNext build output
+/.open-next/
+
+# Claude Code
+/.claude/
+/.wrangler/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
