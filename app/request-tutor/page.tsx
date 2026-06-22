@@ -11,8 +11,10 @@ import { Step4 } from "./steps/Step4";
 import { Step5 } from "./steps/Step5";
 import { Step6 } from "./steps/Step6";
 import type { ParentFormData } from "./types";
+import { capture } from "@/lib/analytics";
 
 const TOTAL_STEPS = 6;
+const FORM = "parent_request";
 
 export default function RequestTutorPage() {
   const [step, setStep] = useState(1);
@@ -23,6 +25,9 @@ export default function RequestTutorPage() {
   const methods = useForm<ParentFormData>({ mode: "onTouched" });
 
   function next() {
+    // Fire in the handler (not an effect) so each completed step is one
+    // funnel event. Lets us see the exact step where parents drop off.
+    capture("form_step_completed", { form: FORM, step, total_steps: TOTAL_STEPS });
     setStep((s) => Math.min(s + 1, TOTAL_STEPS));
   }
 
@@ -33,6 +38,7 @@ export default function RequestTutorPage() {
   async function handleSubmit() {
     setLoading(true);
     setError(null);
+    capture("form_submit_attempted", { form: FORM });
     try {
       const data = methods.getValues();
       const res = await fetch("/api/submit-parent", {
@@ -44,8 +50,11 @@ export default function RequestTutorPage() {
         const body = await res.json().catch(() => ({}));
         throw new Error(body.message ?? "Something went wrong. Please try again.");
       }
+      // Conversion event — the funnel endpoint. No PII in properties (POPIA).
+      capture("lead_submitted", { form: FORM });
       setSubmitted(true);
     } catch (err) {
+      capture("form_submit_failed", { form: FORM });
       setError(err instanceof Error ? err.message : "Something went wrong.");
     } finally {
       setLoading(false);

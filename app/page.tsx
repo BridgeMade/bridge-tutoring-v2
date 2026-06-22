@@ -89,6 +89,7 @@ export default function HomePage() {
               <div className="mt-10">
                 <Link
                   href="/request-tutor"
+                  data-cta="hero_find_tutor"
                   className="inline-flex items-center justify-center rounded-xl bg-coral-400 text-white font-semibold px-8 py-4 text-base hover:bg-coral-500 transition-colors"
                 >
                   Find your tutor
@@ -194,6 +195,7 @@ export default function HomePage() {
           <div className="mt-14 text-center">
             <Link
               href="/request-tutor"
+              data-cta="midpage_find_tutor"
               className="inline-flex items-center justify-center rounded-xl bg-coral-400 text-white font-semibold px-8 py-4 text-base hover:bg-coral-500 transition-colors"
             >
               Find your tutor
@@ -265,8 +267,9 @@ export default function HomePage() {
           <div className="relative w-full lg:w-1/2 h-72 lg:h-auto">
             <Image
               src="/Tutor hero Image 1.png"
-              alt="Bridge tutor"
+              alt="A Bridge tutor working with a student"
               fill
+              sizes="(min-width: 1024px) 50vw, 100vw"
               className="object-cover object-center"
             />
           </div>
@@ -294,6 +297,7 @@ export default function HomePage() {
               <div className="mt-8">
                 <Link
                   href="/become-tutor"
+                  data-cta="home_become_tutor"
                   className="inline-flex items-center justify-center w-full sm:w-auto rounded-xl bg-coral-400 text-white font-semibold px-8 py-4 text-base hover:bg-coral-500 transition-colors"
                 >
                   Apply to become a tutor →
