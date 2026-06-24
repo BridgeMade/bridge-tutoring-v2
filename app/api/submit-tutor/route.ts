@@ -6,7 +6,7 @@ import {
 } from "@/lib/whatsapp";
 import { tutorConfirmationEmail } from "@/lib/emailTemplates";
 
-export const runtime = "edge";
+export const runtime = "nodejs";
 
 function sanitise(value: unknown): string {
   if (typeof value !== "string") return "";

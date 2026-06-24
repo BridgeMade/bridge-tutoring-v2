@@ -6,7 +6,7 @@ import {
 } from "@/lib/whatsapp";
 import { parentConfirmationEmail } from "@/lib/emailTemplates";
 
-export const runtime = "edge";
+export const runtime = "nodejs";
 
 function sanitise(value: unknown): string {
   if (typeof value !== "string") return "";
@@ -23,7 +23,6 @@ function sanitiseArray(value: unknown): string[] {
 }
 
 export async function POST(req: NextRequest) {
-  try {
   const resend = new Resend(process.env.RESEND_API_KEY);
 
   let body: Record<string, unknown>;
@@ -107,14 +106,4 @@ export async function POST(req: NextRequest) {
   }
 
   return NextResponse.json({ ok: true }, { status: 200 });
-  } catch (err) {
-    // TEMP DEBUG — surface the real error to diagnose the production 500.
-    // Revert after diagnosis.
-    const message = err instanceof Error ? `${err.name}: ${err.message}` : String(err);
-    const stack = err instanceof Error ? err.stack : undefined;
-    return NextResponse.json(
-      { message: "DEBUG", error: message, stack, hasResendKey: !!process.env.RESEND_API_KEY, from: process.env.RESEND_FROM_EMAIL ?? null, notify: process.env.NOTIFY_EMAIL ?? null },
-      { status: 500 },
-    );
-  }
 }
