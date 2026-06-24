@@ -1,8 +1,11 @@
+import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 
-export const metadata = {
-  title: "Privacy Policy — Bridge Tutoring",
+export const metadata: Metadata = {
+  title: "Privacy Policy",
+  alternates: { canonical: "/privacy" },
+  robots: { index: false },
 };
 
 export default function PrivacyPage() {

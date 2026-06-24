@@ -20,9 +20,19 @@ Lead-capture website for Bridge Tutoring — a human-matched tutoring service in
 - `npm run lint` — run ESLint
 
 ## Colour system
-- Parent journey accent: teal (primary brand)
+- Primary brand / parent journey accent: coral (#F2755E — `coral-400`)
 - Tutor journey accent: purple
-- Custom tokens defined in tailwind.config.ts
+- Headings & dark surfaces: deep navy
+- Custom tokens defined in app/globals.css (Tailwind v4 CSS tokens)
+- Full palette + logo usage: see Bridge Brand Guidelines 2025
+
+## Voice & content — read before writing any copy
+- Before writing or editing any customer-facing copy (homepage, landing pages,
+  suburb/subject pages, blog), read `references/voice.md`, `references/facts.md`,
+  and `references/seo-checklist.md`.
+- Voice = "The Trusted Guide": professional but warm, calm, parent-focused.
+  Always "your child". Never salesy, fear-based, or hyped. SA/UK English.
+- Use only the verified numbers in `references/facts.md` — never invent or round.
 
 ## Code conventions
 - All components: functional, no class components

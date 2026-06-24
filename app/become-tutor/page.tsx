@@ -11,8 +11,10 @@ import { Step3 } from "./steps/Step3";
 import { Step4 } from "./steps/Step4";
 import { Step5 } from "./steps/Step5";
 import type { TutorFormData } from "./types";
+import { capture } from "@/lib/analytics";
 
 const TOTAL_STEPS = 5;
+const FORM = "tutor_application";
 
 export default function BecomeTutorPage() {
   // step 0 = pitch screen, steps 1–5 = form steps
@@ -24,6 +26,13 @@ export default function BecomeTutorPage() {
   const methods = useForm<TutorFormData>({ mode: "onTouched" });
 
   function next() {
+    // step 0 → 1 is "started the application" (left the pitch screen);
+    // later steps are funnel progress. Fire in the handler, not an effect.
+    capture(step === 0 ? "form_started" : "form_step_completed", {
+      form: FORM,
+      step,
+      total_steps: TOTAL_STEPS,
+    });
     setStep((s) => Math.min(s + 1, TOTAL_STEPS));
   }
 
@@ -34,6 +43,7 @@ export default function BecomeTutorPage() {
   async function handleSubmit() {
     setLoading(true);
     setError(null);
+    capture("form_submit_attempted", { form: FORM });
     try {
       const data = methods.getValues();
       const res = await fetch("/api/submit-tutor", {
@@ -45,8 +55,10 @@ export default function BecomeTutorPage() {
         const body = await res.json().catch(() => ({}));
         throw new Error(body.message ?? "Something went wrong. Please try again.");
       }
+      capture("tutor_application_submitted", { form: FORM });
       setSubmitted(true);
     } catch (err) {
+      capture("form_submit_failed", { form: FORM });
       setError(err instanceof Error ? err.message : "Something went wrong.");
     } finally {
       setLoading(false);

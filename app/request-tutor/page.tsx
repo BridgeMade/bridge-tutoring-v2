@@ -1,38 +1,68 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { useForm, FormProvider } from "react-hook-form";
 import { SidePanel } from "./SidePanel";
 import { FormPanel } from "./FormPanel";
+import { IntroScreen } from "./IntroScreen";
 import { Step1 } from "./steps/Step1";
 import { Step2 } from "./steps/Step2";
 import { Step3 } from "./steps/Step3";
 import { Step4 } from "./steps/Step4";
 import { Step5 } from "./steps/Step5";
 import { Step6 } from "./steps/Step6";
+import { SUBJECT_OPTIONS } from "./types";
 import type { ParentFormData } from "./types";
+import { capture } from "@/lib/analytics";
 
 const TOTAL_STEPS = 6;
+const FORM = "parent_request";
 
-export default function RequestTutorPage() {
-  const [step, setStep] = useState(1);
+// Reads ?subject= and returns it only if it's a known subject (guards against
+// arbitrary query values landing in the form).
+function useInitialSubject(): string | null {
+  const params = useSearchParams();
+  const raw = params.get("subject");
+  if (!raw) return null;
+  return SUBJECT_OPTIONS.find((s) => s.toLowerCase() === raw.toLowerCase()) ?? null;
+}
+
+function RequestTutorForm() {
+  const initialSubject = useInitialSubject();
+  // step 0 = subject intro screen (only when arriving with a subject);
+  // steps 1–6 = the form. No subject → start at step 1 as before.
+  const [step, setStep] = useState(initialSubject ? 0 : 1);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const methods = useForm<ParentFormData>({ mode: "onTouched" });
+  const methods = useForm<ParentFormData>({
+    mode: "onTouched",
+    defaultValues: initialSubject ? { subjects: [initialSubject] } : undefined,
+  });
 
   function next() {
+    // Fire in the handler (not an effect) so each completed step is one
+    // funnel event. step 0 → 1 is "started from a subject intro screen".
+    capture(step === 0 ? "form_started" : "form_step_completed", {
+      form: FORM,
+      step,
+      total_steps: TOTAL_STEPS,
+      subject: initialSubject ?? undefined,
+    });
     setStep((s) => Math.min(s + 1, TOTAL_STEPS));
   }
 
   function back() {
+    // Don't return to the intro screen once the form has begun.
     setStep((s) => Math.max(s - 1, 1));
   }
 
   async function handleSubmit() {
     setLoading(true);
     setError(null);
+    capture("form_submit_attempted", { form: FORM });
     try {
       const data = methods.getValues();
       const res = await fetch("/api/submit-parent", {
@@ -44,8 +74,11 @@ export default function RequestTutorPage() {
         const body = await res.json().catch(() => ({}));
         throw new Error(body.message ?? "Something went wrong. Please try again.");
       }
+      // Conversion event — the funnel endpoint. No PII in properties (POPIA).
+      capture("lead_submitted", { form: FORM });
       setSubmitted(true);
     } catch (err) {
+      capture("form_submit_failed", { form: FORM });
       setError(err instanceof Error ? err.message : "Something went wrong.");
     } finally {
       setLoading(false);
@@ -87,6 +120,9 @@ export default function RequestTutorPage() {
 
       {/* Right panel */}
       <div className="flex-1 flex flex-col bg-white">
+        {step === 0 && initialSubject ? (
+          <IntroScreen subject={initialSubject} onStart={next} />
+        ) : (
         <FormProvider {...methods}>
           <FormPanel step={step} totalSteps={TOTAL_STEPS}>
             {step === 1 && <Step1 onNext={next} />}
@@ -104,7 +140,17 @@ export default function RequestTutorPage() {
             )}
           </FormPanel>
         </FormProvider>
+        )}
       </div>
     </div>
+  );
+}
+
+// useSearchParams requires a Suspense boundary during prerender.
+export default function RequestTutorPage() {
+  return (
+    <Suspense fallback={null}>
+      <RequestTutorForm />
+    </Suspense>
   );
 }

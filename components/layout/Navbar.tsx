@@ -13,16 +13,29 @@ export function Navbar() {
         <div className="flex h-16 items-center justify-between">
           <Link href="/" onClick={() => setOpen(false)}>
             <Image
-              src="/Bridge Tutoring Logo.svg"
-              alt="Bridge Tutoring"
-              width={156}
-              height={52}
-              className="h-12 w-auto"
+              src="/lockup-default.svg"
+              alt="Bridge Tutoring Services"
+              width={160}
+              height={40}
+              className="h-8 w-auto"
+              priority
             />
           </Link>
 
           {/* Desktop nav */}
           <nav className="hidden sm:flex items-center gap-4">
+            <Link
+              href="/about"
+              className="text-sm font-medium text-neutral-600 hover:text-neutral-900 transition-colors px-3 py-2 rounded-lg hover:bg-neutral-100"
+            >
+              About
+            </Link>
+            <Link
+              href="/blog"
+              className="text-sm font-medium text-neutral-600 hover:text-neutral-900 transition-colors px-3 py-2 rounded-lg hover:bg-neutral-100"
+            >
+              Blog
+            </Link>
             <Link
               href="/become-tutor"
               className="text-sm font-medium text-neutral-600 hover:text-neutral-900 transition-colors px-3 py-2 rounded-lg hover:bg-neutral-100"
@@ -53,6 +66,20 @@ export function Navbar() {
       {/* Mobile menu dropdown */}
       {open && (
         <div className="sm:hidden border-t border-neutral-100 bg-white px-4 py-4 flex flex-col gap-2">
+          <Link
+            href="/about"
+            onClick={() => setOpen(false)}
+            className="text-sm font-medium text-neutral-700 px-4 py-3 rounded-xl hover:bg-neutral-50 transition-colors"
+          >
+            About
+          </Link>
+          <Link
+            href="/blog"
+            onClick={() => setOpen(false)}
+            className="text-sm font-medium text-neutral-700 px-4 py-3 rounded-xl hover:bg-neutral-50 transition-colors"
+          >
+            Blog
+          </Link>
           <Link
             href="/become-tutor"
             onClick={() => setOpen(false)}

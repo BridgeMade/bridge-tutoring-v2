@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "next": "16.2.7",
+    "posthog-js": "^1.391.8",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "react-hook-form": "^7.77.0",

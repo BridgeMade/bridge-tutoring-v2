@@ -1,5 +1,15 @@
 @import "tailwindcss";
 
+/* Brand logo SVGs reference font-family "PJS". Alias it to Plus Jakarta Sans,
+   which is loaded via next/font (--font-jakarta), so the lockups render in the
+   correct brand typeface instead of a system fallback. */
+@font-face {
+  font-family: "PJS";
+  src: local("Plus Jakarta Sans"), local("PlusJakartaSans");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
 @theme inline {
   /* Brand colours */
   --color-coral-50: #fff4f2;

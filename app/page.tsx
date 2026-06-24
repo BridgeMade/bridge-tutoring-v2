@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { PostCard } from "@/components/blog/PostCard";
+import { allPosts } from "@/content/blog";
 
 const subjects = [
   "Mathematics", "Physical Sciences", "Life Sciences",
@@ -82,18 +84,37 @@ export default function HomePage() {
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col-reverse lg:flex-row lg:items-center lg:gap-8 py-16 sm:py-20 lg:py-24">
             {/* Text */}
-            <div className="lg:flex-1 lg:max-w-[520px] pt-8 lg:pt-0">
-              <h1 className="text-5xl sm:text-6xl font-black leading-[1.05] tracking-tight text-neutral-900">
-                Tutor support that builds confidence and improves results.
+            <div className="lg:flex-1 lg:max-w-[540px] pt-8 lg:pt-0">
+              <span className="inline-flex items-center gap-2 rounded-full bg-coral-50 text-coral-600 text-sm font-semibold px-4 py-1.5">
+                Pretoria · Johannesburg · Online across South Africa
+              </span>
+              <h1 className="mt-5 text-5xl sm:text-6xl font-black leading-[1.05] tracking-tight text-neutral-900">
+                The right tutor for your child, hand-picked for you.
               </h1>
-              <div className="mt-10">
+              <p className="mt-5 text-lg text-neutral-600 leading-relaxed">
+                Bridge isn&apos;t a marketplace you have to search. Tell us what
+                your child needs and our team matches them with a vetted tutor —
+                in-person or online. You hear back within 24 hours.
+              </p>
+              <div className="mt-8 flex flex-col sm:flex-row gap-3">
                 <Link
                   href="/request-tutor"
+                  data-cta="hero_find_tutor"
                   className="inline-flex items-center justify-center rounded-xl bg-coral-400 text-white font-semibold px-8 py-4 text-base hover:bg-coral-500 transition-colors"
                 >
                   Find your tutor
                 </Link>
+                <Link
+                  href="#how-it-works"
+                  data-cta="hero_how_it_works"
+                  className="inline-flex items-center justify-center rounded-xl border border-neutral-200 text-neutral-700 font-semibold px-8 py-4 text-base hover:border-neutral-300 hover:bg-neutral-50 transition-colors"
+                >
+                  See how it works
+                </Link>
               </div>
+              <p className="mt-5 text-sm text-neutral-500">
+                Trusted by <span className="font-semibold text-neutral-700">500+ families</span> · Free assessment · No obligation
+              </p>
             </div>
 
             {/* Image with coral blob */}
@@ -142,21 +163,90 @@ export default function HomePage() {
       </section>
 
       {/* Stats bar */}
-      <section className="py-14 border-y border-neutral-100">
+      <section className="py-14 bg-coral-50/60 border-y border-coral-100">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <dl className="grid grid-cols-2 gap-y-10 sm:grid-cols-4 divide-x-0 sm:divide-x divide-neutral-100">
+          <dl className="grid grid-cols-2 gap-y-10 sm:grid-cols-4 divide-x-0 sm:divide-x divide-coral-100">
             {stats.map((stat) => (
               <div key={stat.value} className="text-center px-4">
-                <dt className="text-4xl font-black text-coral-400">{stat.value}</dt>
-                <dd className="mt-2 text-sm text-neutral-500 leading-snug max-w-[130px] mx-auto">{stat.label}</dd>
+                <dt className="text-4xl font-black text-coral-500">{stat.value}</dt>
+                <dd className="mt-2 text-sm text-neutral-600 leading-snug max-w-[130px] mx-auto">{stat.label}</dd>
               </div>
             ))}
           </dl>
         </div>
       </section>
 
+      {/* How you learn — online + in-person (differentiator + local SEO) */}
+      <section className="py-20 sm:py-24 bg-white">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-xl mx-auto mb-14">
+            <h2 className="text-3xl font-bold text-neutral-900">
+              In-person or online — your choice
+            </h2>
+            <p className="mt-3 text-neutral-500 text-lg">
+              Lessons that fit your family, wherever you are in South Africa.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="rounded-2xl border border-neutral-200 p-8 hover:border-coral-200 transition-colors">
+              <h3 className="text-xl font-bold text-neutral-900">
+                In-person tutoring
+              </h3>
+              <p className="mt-3 text-neutral-600 leading-relaxed">
+                Face-to-face lessons at home across Pretoria and Johannesburg —
+                from Hatfield and Waterkloof to Sandton, Fourways and Roodepoort.
+                We match your child with a tutor close to you.
+              </p>
+            </div>
+            <div className="rounded-2xl border border-neutral-200 p-8 hover:border-coral-200 transition-colors">
+              <h3 className="text-xl font-bold text-neutral-900">
+                Online tutoring
+              </h3>
+              <p className="mt-3 text-neutral-600 leading-relaxed">
+                Live one-on-one lessons anywhere in South Africa. Same hand-picked
+                tutors, same personal attention — from the comfort of home, on
+                your schedule.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Subjects */}
+      <section className="bg-neutral-50 py-20 sm:py-24">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-xl mx-auto mb-12">
+            <h2 className="text-3xl font-bold text-neutral-900">
+              Subjects we cover
+            </h2>
+            <p className="mt-3 text-neutral-500 text-lg">
+              Grade R through matric — and beyond. Pick a subject to get started.
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-3 justify-center">
+            {subjects.map((s) => (
+              <Link
+                key={s}
+                href={`/request-tutor?subject=${encodeURIComponent(s)}`}
+                data-cta="subject_pill"
+                className="rounded-full bg-white border border-neutral-200 px-5 py-2 text-sm font-medium text-neutral-700 hover:border-coral-400 hover:text-coral-600 transition-colors"
+              >
+                {s}
+              </Link>
+            ))}
+            <Link
+              href="/request-tutor"
+              data-cta="subject_more"
+              className="rounded-full bg-coral-400 text-white px-5 py-2 text-sm font-medium shadow-sm hover:bg-coral-500 transition-colors"
+            >
+              + many more
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* How it works */}
-      <section className="py-20 sm:py-24 bg-neutral-50">
+      <section id="how-it-works" className="py-20 sm:py-24 bg-white scroll-mt-20">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-xl mx-auto mb-16">
             <h2 className="text-3xl font-bold text-neutral-900">
@@ -194,43 +284,20 @@ export default function HomePage() {
           <div className="mt-14 text-center">
             <Link
               href="/request-tutor"
+              data-cta="midpage_find_tutor"
               className="inline-flex items-center justify-center rounded-xl bg-coral-400 text-white font-semibold px-8 py-4 text-base hover:bg-coral-500 transition-colors"
             >
               Find your tutor
             </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Subjects */}
-      <section className="bg-neutral-50 py-20 sm:py-24">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-xl mx-auto mb-12">
-            <h2 className="text-3xl font-bold text-neutral-900">
-              Subjects we cover
-            </h2>
-            <p className="mt-3 text-neutral-500 text-lg">
-              Grade R through matric — and beyond.
+            <p className="mt-5 text-sm text-neutral-500 max-w-md mx-auto">
+              Not the right fit? We&apos;ll rematch your child with another tutor.
             </p>
-          </div>
-          <div className="flex flex-wrap gap-3 justify-center">
-            {subjects.map((s) => (
-              <span
-                key={s}
-                className="rounded-full bg-white border border-neutral-200 px-5 py-2 text-sm font-medium text-neutral-700 shadow-sm"
-              >
-                {s}
-              </span>
-            ))}
-            <span className="rounded-full bg-coral-400 text-white px-5 py-2 text-sm font-medium shadow-sm">
-              + many more
-            </span>
           </div>
         </div>
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 sm:py-24">
+      <section className="py-20 sm:py-24 bg-neutral-50">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-xl mx-auto mb-14">
             <h2 className="text-3xl font-bold text-neutral-900">
@@ -242,17 +309,60 @@ export default function HomePage() {
           </div>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
             {testimonials.map((t) => (
-              <div key={t.name} className="rounded-2xl bg-neutral-50 p-8">
-                <p className="text-neutral-700 leading-relaxed italic">
-                  &ldquo;{t.quote}&rdquo;
-                </p>
-                <div className="mt-6">
-                  <p className="text-sm font-semibold text-neutral-900">
-                    {t.name}
-                  </p>
-                  <p className="text-xs text-neutral-400">{t.location}</p>
+              <figure
+                key={t.name}
+                className="flex flex-col rounded-2xl bg-white border border-neutral-100 shadow-sm p-8"
+              >
+                <div className="flex gap-0.5 text-coral-400" aria-label="5 out of 5 stars">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <svg key={i} className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                      <path d="M9.05 2.93c.3-.92 1.6-.92 1.9 0l1.36 4.18a1 1 0 0 0 .95.69h4.4c.96 0 1.36 1.23.58 1.8l-3.56 2.58a1 1 0 0 0-.36 1.12l1.36 4.18c.3.92-.75 1.69-1.54 1.12l-3.56-2.58a1 1 0 0 0-1.18 0l-3.56 2.58c-.79.57-1.84-.2-1.54-1.12l1.36-4.18a1 1 0 0 0-.36-1.12L1.09 9.6c-.78-.57-.38-1.8.58-1.8h4.4a1 1 0 0 0 .95-.69L8.38 2.93Z" />
+                    </svg>
+                  ))}
                 </div>
-              </div>
+                <blockquote className="mt-4 flex-1 text-neutral-700 leading-relaxed">
+                  &ldquo;{t.quote}&rdquo;
+                </blockquote>
+                <figcaption className="mt-6 flex items-center gap-3">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-coral-100 text-coral-600 font-semibold text-sm">
+                    {t.name.charAt(0)}
+                  </span>
+                  <span>
+                    <span className="block text-sm font-semibold text-neutral-900">
+                      {t.name}
+                    </span>
+                    <span className="block text-xs text-neutral-400">{t.location}</span>
+                  </span>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Blog strip */}
+      <section className="py-20 sm:py-24 bg-white">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-widest text-coral-500">
+                From the blog
+              </p>
+              <h2 className="mt-2 text-3xl font-bold text-neutral-900">
+                Ways to help your child learn
+              </h2>
+            </div>
+            <Link
+              href="/blog"
+              data-cta="home_view_blog"
+              className="text-sm font-semibold text-coral-600 hover:text-coral-700 transition-colors"
+            >
+              View all posts →
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {allPosts.slice(0, 3).map((post) => (
+              <PostCard key={post.slug} post={post} />
             ))}
           </div>
         </div>
@@ -265,8 +375,9 @@ export default function HomePage() {
           <div className="relative w-full lg:w-1/2 h-72 lg:h-auto">
             <Image
               src="/Tutor hero Image 1.png"
-              alt="Bridge tutor"
+              alt="A Bridge tutor working with a student"
               fill
+              sizes="(min-width: 1024px) 50vw, 100vw"
               className="object-cover object-center"
             />
           </div>
@@ -294,6 +405,7 @@ export default function HomePage() {
               <div className="mt-8">
                 <Link
                   href="/become-tutor"
+                  data-cta="home_become_tutor"
                   className="inline-flex items-center justify-center w-full sm:w-auto rounded-xl bg-coral-400 text-white font-semibold px-8 py-4 text-base hover:bg-coral-500 transition-colors"
                 >
                   Apply to become a tutor →
