@@ -48,7 +48,7 @@ export const posts: Post[] = [
     date: "2025-03-15",
     categories: ["Parental Guidance"],
     author: "Bridge Tutoring",
-    image: "/blog/choose-the-right-tutor.jpg",
+    image: "/blog/choose-the-right-tutor.png",
     imageAlt: "A student smiling in front of a chalkboard covered in equations",
     body: [
       {
@@ -115,7 +115,7 @@ export const posts: Post[] = [
     date: "2025-03-27",
     categories: ["Academic Success Tips", "Exam Preparation"],
     author: "Bridge Tutoring",
-    image: "/blog/first-semester-report-card.jpg",
+    image: "/blog/How-to-review-your-school-first-semester-report-card.jpg",
     imageAlt: "A parent and child reviewing a report card together at a table",
     body: [
       {
@@ -199,7 +199,7 @@ export const posts: Post[] = [
     date: "2025-04-04",
     categories: ["Exam Preparation", "Academic Success Tips"],
     author: "Bridge Tutoring",
-    image: "/blog/quadratic-equations.jpg",
+    image: "/blog/Quadratic-Equations-demystified.jpeg",
     imageAlt: "An illustrated student solving quadratic equations at a desk",
     body: [
       {
@@ -304,7 +304,7 @@ export const posts: Post[] = [
     date: "2025-07-10",
     categories: ["Parental Guidance", "Academic Success Tips"],
     author: "Bridge Tutoring",
-    image: "/blog/one-on-one-tutoring.jpg",
+    image: "/blog/Why-we-champion-one-on-one-tutoring.jpg",
     imageAlt: "A tutor working one-on-one with a student",
     body: [
       {
