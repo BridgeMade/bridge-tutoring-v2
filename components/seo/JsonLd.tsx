@@ -10,8 +10,11 @@ export function OrganizationJsonLd() {
     "@id": absoluteUrl("/#organization"),
     name: business.name,
     legalName: business.legalName,
+    slogan: business.tagline,
     url: business.url,
     email: business.email,
+    logo: absoluteUrl(business.logo),
+    image: absoluteUrl(business.logo),
     description: business.description,
     areaServed: areasServed.map((name) =>
       name === "South Africa"

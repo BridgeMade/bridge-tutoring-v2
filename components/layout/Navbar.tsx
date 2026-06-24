@@ -13,11 +13,12 @@ export function Navbar() {
         <div className="flex h-16 items-center justify-between">
           <Link href="/" onClick={() => setOpen(false)}>
             <Image
-              src="/Bridge Tutoring Logo.svg"
-              alt="Bridge Tutoring"
-              width={156}
-              height={52}
-              className="h-12 w-auto"
+              src="/lockup-default.svg"
+              alt="Bridge Tutoring Services"
+              width={160}
+              height={40}
+              className="h-8 w-auto"
+              priority
             />
           </Link>
 

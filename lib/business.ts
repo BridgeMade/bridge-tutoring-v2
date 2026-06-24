@@ -4,12 +4,15 @@
 
 export const business = {
   name: "Bridge Tutoring",
-  legalName: "Bridge Tutoring",
+  legalName: "Bridge Tutoring Services",
+  tagline: "Where students become learners.",
   description:
-    "Bridge matches your child with a hand-picked tutor. Online tutoring across South Africa, plus in-person tutoring in Pretoria and Johannesburg.",
+    "Bridge matches your child with a hand-picked tutor and builds a learning programme around how they actually learn. Online tutoring across South Africa, plus in-person tutoring in Pretoria and Johannesburg.",
   url: "https://bridgetutoring.co.za",
   email: "support@bridgetutoring.co.za",
   country: "ZA",
+  // Logo for Organization schema (absolute URL resolved at use site).
+  logo: "/app-icon-primary.png",
   // Social / external profiles for sameAs (add as they go live).
   sameAs: [] as string[],
 } as const;
@@ -67,6 +70,38 @@ export const areasServed = [
   "Pretoria",
   "Johannesburg",
 ] as const;
+
+// A suburb resolved with its metro + region context, for landing pages.
+export type SuburbContext = {
+  name: string;
+  slug: string;
+  metro: "Pretoria" | "Johannesburg";
+  region: string;
+  // Other suburbs in the same region — used for internal links.
+  nearby: { name: string; slug: string }[];
+};
+
+// All suburbs flattened — drives generateStaticParams and the sitemap.
+export const allSuburbs: { name: string; slug: string }[] = inPersonAreas.flatMap(
+  (m) => m.suburbs,
+);
+
+// Resolve a slug to its full context, or null if unknown.
+export function getSuburbBySlug(slug: string): SuburbContext | null {
+  for (const metro of inPersonAreas) {
+    const match = metro.suburbs.find((s) => s.slug === slug);
+    if (match) {
+      return {
+        name: match.name,
+        slug: match.slug,
+        metro: metro.name,
+        region: metro.region,
+        nearby: metro.suburbs.filter((s) => s.slug !== slug),
+      };
+    }
+  }
+  return null;
+}
 
 // Absolute URL helper for canonical + OG + schema.
 export function absoluteUrl(path = "/"): string {

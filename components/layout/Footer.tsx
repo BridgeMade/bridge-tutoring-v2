@@ -8,11 +8,11 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-3">
           <div>
             <Image
-              src="/Bridge Tutoring Logo.svg"
-              alt="Bridge Tutoring"
-              width={156}
-              height={52}
-              className="h-12 w-auto brightness-0 invert"
+              src="/lockup-reversed.svg"
+              alt="Bridge Tutoring Services"
+              width={160}
+              height={40}
+              className="h-9 w-auto"
             />
             <p className="mt-3 text-sm text-neutral-400 leading-relaxed max-w-xs">
               Hand-picked tutors in Pretoria and Johannesburg. We do the

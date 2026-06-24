@@ -1,3 +1,6 @@
+import Image from "next/image";
+import Link from "next/link";
+
 const sideCopy: Record<number, { heading: string; body: string }> = {
   0: {
     heading: "Teach with Bridge",
@@ -34,9 +37,15 @@ export function SidePanel({ step }: SidePanelProps) {
   return (
     <div className="flex flex-col justify-between h-full px-8 py-10 sm:px-12">
       <div>
-        <span className="text-2xl font-bold text-white tracking-tight">
-          Bridge
-        </span>
+        <Link href="/" aria-label="Bridge Tutoring home">
+          <Image
+            src="/lockup-reversed.svg"
+            alt="Bridge Tutoring Services"
+            width={150}
+            height={38}
+            className="h-9 w-auto"
+          />
+        </Link>
         <div className="mt-12">
           <h2 className="text-2xl sm:text-3xl font-bold text-white leading-snug">
             {copy.heading}
