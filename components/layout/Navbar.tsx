@@ -25,6 +25,12 @@ export function Navbar() {
           {/* Desktop nav */}
           <nav className="hidden sm:flex items-center gap-4">
             <Link
+              href="/about"
+              className="text-sm font-medium text-neutral-600 hover:text-neutral-900 transition-colors px-3 py-2 rounded-lg hover:bg-neutral-100"
+            >
+              About
+            </Link>
+            <Link
               href="/become-tutor"
               className="text-sm font-medium text-neutral-600 hover:text-neutral-900 transition-colors px-3 py-2 rounded-lg hover:bg-neutral-100"
             >
@@ -54,6 +60,13 @@ export function Navbar() {
       {/* Mobile menu dropdown */}
       {open && (
         <div className="sm:hidden border-t border-neutral-100 bg-white px-4 py-4 flex flex-col gap-2">
+          <Link
+            href="/about"
+            onClick={() => setOpen(false)}
+            className="text-sm font-medium text-neutral-700 px-4 py-3 rounded-xl hover:bg-neutral-50 transition-colors"
+          >
+            About
+          </Link>
           <Link
             href="/become-tutor"
             onClick={() => setOpen(false)}
