@@ -126,6 +126,30 @@ export default function AboutPage() {
           </div>
         </section>
 
+        {/* Frustration → solution (parent's words) */}
+        <section className="py-16 sm:py-20 bg-coral-50/60">
+          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl font-bold text-neutral-900">
+              We understand the frustration
+            </h2>
+            <p className="mt-4 text-neutral-600 leading-relaxed max-w-2xl">
+              It&apos;s hard to watch your child work hard and still fall short.
+              As a parent, you want the best for them — but finding the right
+              support can feel overwhelming. Most services promise results, yet
+              lack the expertise, flexibility, or personal approach to actually
+              meet your child&apos;s needs.
+            </p>
+            <p className="mt-4 text-neutral-600 leading-relaxed max-w-2xl">
+              Bridge is built differently. Our tutors work within a proven
+              system designed to adapt to how each student learns. We keep you
+              informed with monthly progress reports, and our booking system
+              makes scheduling and rescheduling simple. With the Bridge app, the
+              progress is always visible — so you never have to wonder how your
+              child is doing.
+            </p>
+          </div>
+        </section>
+
         {/* Four pillars */}
         <section className="bg-neutral-50 py-16 sm:py-20">
           <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">

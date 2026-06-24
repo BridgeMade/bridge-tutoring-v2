@@ -31,6 +31,12 @@ export function Navbar() {
               About
             </Link>
             <Link
+              href="/blog"
+              className="text-sm font-medium text-neutral-600 hover:text-neutral-900 transition-colors px-3 py-2 rounded-lg hover:bg-neutral-100"
+            >
+              Blog
+            </Link>
+            <Link
               href="/become-tutor"
               className="text-sm font-medium text-neutral-600 hover:text-neutral-900 transition-colors px-3 py-2 rounded-lg hover:bg-neutral-100"
             >
@@ -66,6 +72,13 @@ export function Navbar() {
             className="text-sm font-medium text-neutral-700 px-4 py-3 rounded-xl hover:bg-neutral-50 transition-colors"
           >
             About
+          </Link>
+          <Link
+            href="/blog"
+            onClick={() => setOpen(false)}
+            className="text-sm font-medium text-neutral-700 px-4 py-3 rounded-xl hover:bg-neutral-50 transition-colors"
+          >
+            Blog
           </Link>
           <Link
             href="/become-tutor"

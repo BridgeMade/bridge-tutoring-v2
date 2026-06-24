@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { PostCard } from "@/components/blog/PostCard";
+import { allPosts } from "@/content/blog";
 
 const subjects = [
   "Mathematics", "Physical Sciences", "Life Sciences",
@@ -333,6 +335,34 @@ export default function HomePage() {
                   </span>
                 </figcaption>
               </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Blog strip */}
+      <section className="py-20 sm:py-24 bg-white">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-widest text-coral-500">
+                From the blog
+              </p>
+              <h2 className="mt-2 text-3xl font-bold text-neutral-900">
+                Ways to help your child learn
+              </h2>
+            </div>
+            <Link
+              href="/blog"
+              data-cta="home_view_blog"
+              className="text-sm font-semibold text-coral-600 hover:text-coral-700 transition-colors"
+            >
+              View all posts →
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {allPosts.slice(0, 3).map((post) => (
+              <PostCard key={post.slug} post={post} />
             ))}
           </div>
         </div>
