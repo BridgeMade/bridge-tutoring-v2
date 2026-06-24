@@ -5,74 +5,78 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { JsonLd } from "@/components/seo/JsonLd";
 import {
+  allSubjects,
+  getSubjectBySlug,
   allSuburbs,
-  getSuburbBySlug,
-  subjects as SUBJECTS,
+  subjects as allSubjectsList,
   absoluteUrl,
-  type SuburbContext,
+  type Subject,
 } from "@/lib/business";
 
 export function generateStaticParams() {
-  return allSuburbs.map((s) => ({ suburb: s.slug }));
+  return allSubjects.map((s) => ({ subject: s.slug }));
 }
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ suburb: string }>;
+  params: Promise<{ subject: string }>;
 }): Promise<Metadata> {
-  const { suburb } = await params;
-  const ctx = getSuburbBySlug(suburb);
-  if (!ctx) return {};
+  const { subject } = await params;
+  const subj = getSubjectBySlug(subject);
+  if (!subj) return {};
 
-  const title = `Tutors in ${ctx.name} — In-Person & Online`;
-  const description = `Find a hand-picked tutor in ${ctx.name}, ${ctx.metro}. Bridge matches your child with a vetted tutor for in-person or online lessons. Free assessment, reply within 24 hours.`;
+  const title = `${subj.name} Tutors — In-Person & Online`;
+  const description = `Find a hand-picked ${subj.name} tutor in Pretoria, Johannesburg or online across South Africa. ${subj.blurb}`.slice(
+    0,
+    160,
+  );
 
   return {
     title,
     description,
-    alternates: { canonical: `/tutors/${ctx.slug}` },
+    alternates: { canonical: `/subjects/${subj.slug}` },
     openGraph: {
       title: `${title} — Bridge Tutoring`,
       description,
-      url: `/tutors/${ctx.slug}`,
+      url: `/subjects/${subj.slug}`,
       type: "website",
     },
   };
 }
 
-// FAQ content, kept here so it feeds both the visible section and the schema.
-function faqsFor(ctx: SuburbContext) {
+function faqsFor(subj: Subject) {
   return [
     {
-      q: `Do you offer in-person tutoring in ${ctx.name}?`,
-      a: `Yes. We match your child with a vetted tutor for face-to-face lessons at home in ${ctx.name} and the surrounding ${ctx.metro} area. If online suits your family better, that's available too.`,
+      q: `Do you offer ${subj.name} tutoring online?`,
+      a: `Yes. We match your child with a ${subj.name} tutor for live one-on-one online lessons anywhere in South Africa, or in-person in Pretoria and Johannesburg.`,
     },
     {
-      q: `Which subjects can my child get help with in ${ctx.name}?`,
-      a: `From Grade R through matric and into university — maths, the sciences, languages, accounting and more. Tell us the subject and we find a tutor who covers it.`,
+      q: `What grades do your ${subj.name} tutors cover?`,
+      a: `From Grade R through matric, and into university where it applies. Tell us your child's grade and we match a tutor suited to that level.`,
     },
     {
-      q: `How does matching work?`,
-      a: `Bridge isn't a directory you search. You tell us about your child, and our team hand-picks a tutor who fits their needs, schedule and how they learn. You hear back within 24 hours.`,
+      q: `How do you choose the right ${subj.name} tutor?`,
+      a: `Bridge isn't a directory you search. You tell us about your child, and our team hand-picks a vetted tutor who fits their level, goals and how they learn. You hear back within 24 hours.`,
     },
     {
-      q: `What does it cost to get started?`,
+      q: `What does it cost to start?`,
       a: `The first assessment is free, with no obligation. It helps us understand where your child is before we match a tutor.`,
     },
   ];
 }
 
-export default async function SuburbPage({
+export default async function SubjectPage({
   params,
 }: {
-  params: Promise<{ suburb: string }>;
+  params: Promise<{ subject: string }>;
 }) {
-  const { suburb } = await params;
-  const ctx = getSuburbBySlug(suburb);
-  if (!ctx) notFound();
+  const { subject } = await params;
+  const subj = getSubjectBySlug(subject);
+  if (!subj) notFound();
 
-  const faqs = faqsFor(ctx);
+  const faqs = faqsFor(subj);
+  const otherSubjects = allSubjectsList.filter((s) => s.slug !== subj.slug);
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -82,8 +86,8 @@ export default async function SuburbPage({
       {
         "@type": "ListItem",
         position: 2,
-        name: `Tutors in ${ctx.name}`,
-        item: absoluteUrl(`/tutors/${ctx.slug}`),
+        name: `${subj.name} Tutors`,
+        item: absoluteUrl(`/subjects/${subj.slug}`),
       },
     ],
   };
@@ -97,6 +101,8 @@ export default async function SuburbPage({
       acceptedAnswer: { "@type": "Answer", text: f.a },
     })),
   };
+
+  const requestHref = `/request-tutor?subject=${encodeURIComponent(subj.formValue)}`;
 
   return (
     <div className="flex flex-col min-h-full">
@@ -117,37 +123,36 @@ export default async function SuburbPage({
               </Link>
             </li>
             <li aria-hidden="true">/</li>
-            <li className="text-neutral-700 font-medium">Tutors in {ctx.name}</li>
+            <li className="text-neutral-700 font-medium">{subj.name} tutors</li>
           </ol>
         </nav>
 
         {/* Hero */}
         <section className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
           <span className="inline-flex items-center rounded-full bg-coral-50 text-coral-600 text-sm font-semibold px-4 py-1.5">
-            {ctx.name} · {ctx.metro}
+            {subj.name}
           </span>
           <h1 className="mt-5 text-4xl sm:text-5xl font-black leading-[1.08] tracking-tight text-neutral-900">
-            Tutors in {ctx.name}, hand-picked for your child.
+            {subj.name} tutors, hand-picked for your child.
           </h1>
           <p className="mt-5 text-lg text-neutral-600 leading-relaxed max-w-2xl">
-            Looking for a tutor in {ctx.name}? Bridge matches your child with a
-            vetted tutor for lessons at home across {ctx.metro} — or online,
-            anywhere in South Africa. You tell us what your child needs, and we
+            {subj.blurb} In-person in Pretoria and Johannesburg, or online
+            anywhere in South Africa — you tell us what your child needs, and we
             do the matching. You hear back within 24 hours.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-3">
             <Link
-              href="/request-tutor"
-              data-cta="suburb_find_tutor"
+              href={requestHref}
+              data-cta="subject_find_tutor"
               className="inline-flex items-center justify-center rounded-xl bg-coral-400 text-white font-semibold px-8 py-4 text-base hover:bg-coral-500 transition-colors"
             >
-              Find your tutor
+              Find a {subj.name} tutor
             </Link>
             <Link
-              href="#subjects"
+              href="#areas"
               className="inline-flex items-center justify-center rounded-xl border border-neutral-200 text-neutral-700 font-semibold px-8 py-4 text-base hover:border-neutral-300 hover:bg-neutral-50 transition-colors"
             >
-              Browse subjects
+              See areas we cover
             </Link>
           </div>
           <p className="mt-5 text-sm text-neutral-500">
@@ -160,53 +165,46 @@ export default async function SuburbPage({
           <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="rounded-2xl border border-neutral-200 bg-white p-8">
               <h2 className="text-xl font-bold text-neutral-900">
-                In-person in {ctx.name}
+                In-person {subj.name} lessons
               </h2>
               <p className="mt-3 text-neutral-600 leading-relaxed">
-                Face-to-face lessons at home in {ctx.name} and nearby {ctx.metro}{" "}
-                suburbs. We match your child with a tutor close to you who fits
-                their schedule and the way they learn.
+                Face-to-face at home across Pretoria and Johannesburg. We match
+                your child with a {subj.name} tutor close to you who fits their
+                schedule and the way they learn.
               </p>
             </div>
             <div className="rounded-2xl border border-neutral-200 bg-white p-8">
               <h2 className="text-xl font-bold text-neutral-900">
-                Online, anywhere
+                Online {subj.name} tutoring
               </h2>
               <p className="mt-3 text-neutral-600 leading-relaxed">
-                Prefer lessons from home? Live one-on-one online tutoring is
-                available across South Africa — the same hand-picked tutors and
-                personal attention, on your schedule.
+                Live one-on-one {subj.name} lessons anywhere in South Africa —
+                the same hand-picked tutors and personal attention, from the
+                comfort of home.
               </p>
             </div>
           </div>
         </section>
 
-        {/* Subjects */}
-        <section id="subjects" className="py-16 sm:py-20 scroll-mt-20">
+        {/* Areas we cover — cross-links to suburb pages */}
+        <section id="areas" className="py-16 sm:py-20 scroll-mt-20">
           <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl font-bold text-neutral-900">
-              Subjects we cover in {ctx.name}
+              {subj.name} tutors near you
             </h2>
             <p className="mt-3 text-neutral-500 text-lg">
-              From Grade R through matric. Pick a subject to get started.
+              In-person across these areas — or online, anywhere in South Africa.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              {SUBJECTS.map((s) => (
+              {allSuburbs.map((s) => (
                 <Link
                   key={s.slug}
-                  href={`/subjects/${s.slug}`}
-                  data-cta="suburb_subject"
+                  href={`/tutors/${s.slug}`}
                   className="rounded-full bg-neutral-50 border border-neutral-200 px-5 py-2 text-sm font-medium text-neutral-700 hover:border-coral-400 hover:text-coral-600 transition-colors"
                 >
                   {s.name}
                 </Link>
               ))}
-              <Link
-                href="/request-tutor"
-                className="rounded-full bg-coral-400 text-white px-5 py-2 text-sm font-medium hover:bg-coral-500 transition-colors"
-              >
-                + many more
-              </Link>
             </div>
           </div>
         </section>
@@ -215,11 +213,14 @@ export default async function SuburbPage({
         <section className="bg-neutral-50 py-16 sm:py-20">
           <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl font-bold text-neutral-900">
-              Tutoring in {ctx.name} — common questions
+              {subj.name} tutoring — common questions
             </h2>
             <dl className="mt-8 space-y-6">
               {faqs.map((f) => (
-                <div key={f.q} className="rounded-2xl bg-white border border-neutral-100 p-6">
+                <div
+                  key={f.q}
+                  className="rounded-2xl bg-white border border-neutral-100 p-6"
+                >
                   <dt className="font-semibold text-neutral-900">{f.q}</dt>
                   <dd className="mt-2 text-neutral-600 leading-relaxed">{f.a}</dd>
                 </div>
@@ -228,33 +229,31 @@ export default async function SuburbPage({
           </div>
         </section>
 
-        {/* Nearby areas — internal links */}
-        {ctx.nearby.length > 0 && (
-          <section className="py-16 sm:py-20">
-            <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-              <h2 className="text-2xl font-bold text-neutral-900">
-                Tutors in nearby areas
-              </h2>
-              <div className="mt-6 flex flex-wrap gap-3">
-                {ctx.nearby.map((n) => (
-                  <Link
-                    key={n.slug}
-                    href={`/tutors/${n.slug}`}
-                    className="rounded-full border border-neutral-200 px-5 py-2 text-sm font-medium text-neutral-700 hover:border-coral-400 hover:text-coral-600 transition-colors"
-                  >
-                    {n.name}
-                  </Link>
-                ))}
-              </div>
+        {/* Other subjects — internal links */}
+        <section className="py-16 sm:py-20">
+          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+            <h2 className="text-2xl font-bold text-neutral-900">
+              Other subjects we cover
+            </h2>
+            <div className="mt-6 flex flex-wrap gap-3">
+              {otherSubjects.map((s) => (
+                <Link
+                  key={s.slug}
+                  href={`/subjects/${s.slug}`}
+                  className="rounded-full border border-neutral-200 px-5 py-2 text-sm font-medium text-neutral-700 hover:border-coral-400 hover:text-coral-600 transition-colors"
+                >
+                  {s.name}
+                </Link>
+              ))}
             </div>
-          </section>
-        )}
+          </div>
+        </section>
 
         {/* CTA */}
         <section className="bg-neutral-900 text-white py-16 sm:py-20">
           <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl sm:text-4xl font-black">
-              Ready to find your child&apos;s tutor in {ctx.name}?
+              Ready to find your child&apos;s {subj.name} tutor?
             </h2>
             <p className="mt-4 text-neutral-300 text-lg max-w-xl mx-auto">
               Tell us what your child needs. We&apos;ll hand-pick a tutor and be
@@ -262,11 +261,11 @@ export default async function SuburbPage({
             </p>
             <div className="mt-8">
               <Link
-                href="/request-tutor"
-                data-cta="suburb_cta_find_tutor"
+                href={requestHref}
+                data-cta="subject_cta_find_tutor"
                 className="inline-flex items-center justify-center rounded-xl bg-coral-400 text-white font-semibold px-8 py-4 text-base hover:bg-coral-500 transition-colors"
               >
-                Find your tutor
+                Find a {subj.name} tutor
               </Link>
             </div>
           </div>

@@ -103,6 +103,96 @@ export function getSuburbBySlug(slug: string): SuburbContext | null {
   return null;
 }
 
+// Subject catalogue — drives /subjects/[subject] pages, the sitemap, and
+// internal links. `formValue` must match a value in the request form's
+// SUBJECT_OPTIONS so the prefill works. `blurb` is a short, in-voice line for
+// the page intro + meta description.
+export type Subject = {
+  name: string;
+  slug: string;
+  formValue: string;
+  blurb: string;
+};
+
+export const subjects: Subject[] = [
+  {
+    name: "Mathematics",
+    slug: "mathematics",
+    formValue: "Mathematics",
+    blurb:
+      "From the basics to matric and beyond. We match your child with a maths tutor who builds real understanding, not just memorised methods.",
+  },
+  {
+    name: "Physical Sciences",
+    slug: "physical-sciences",
+    formValue: "Physical Sciences",
+    blurb:
+      "Physics and chemistry can feel abstract. The right tutor connects the theory to how your child thinks — so it finally clicks.",
+  },
+  {
+    name: "Life Sciences",
+    slug: "life-sciences",
+    formValue: "Life Sciences",
+    blurb:
+      "Biology rewards understanding over cramming. We match a tutor who helps your child make sense of it and remember it.",
+  },
+  {
+    name: "English",
+    slug: "english",
+    formValue: "English",
+    blurb:
+      "Reading, writing, comprehension and literature. A tutor who builds the language confidence your child carries across every subject.",
+  },
+  {
+    name: "Afrikaans",
+    slug: "afrikaans",
+    formValue: "Afrikaans",
+    blurb:
+      "First or second language, we match a tutor who makes Afrikaans approachable — grammar, comprehension and the confidence to use it.",
+  },
+  {
+    name: "Accounting",
+    slug: "accounting",
+    formValue: "Accounting",
+    blurb:
+      "Accounting builds on itself, so gaps compound. A tutor who fills the gaps and turns the principles into something your child can apply.",
+  },
+  {
+    name: "Economics",
+    slug: "economics",
+    formValue: "Economics",
+    blurb:
+      "From micro to macro, a tutor who helps your child connect the concepts to the real world and write answers that earn the marks.",
+  },
+  {
+    name: "Geography",
+    slug: "geography",
+    formValue: "Geography",
+    blurb:
+      "Mapwork, climate, and case studies. We match a tutor who makes the content stick and sharpens exam technique.",
+  },
+  {
+    name: "Mathematical Literacy",
+    slug: "mathematical-literacy",
+    formValue: "Mathematical Literacy",
+    blurb:
+      "Maths grounded in everyday situations. A tutor who builds your child's confidence with the numbers that matter for matric.",
+  },
+  {
+    name: "Business Studies",
+    slug: "business-studies",
+    formValue: "Business Studies",
+    blurb:
+      "Theory that's easy to lose marks on without good structure. A tutor who helps your child learn it well and write it clearly.",
+  },
+];
+
+export const allSubjects = subjects;
+
+export function getSubjectBySlug(slug: string): Subject | null {
+  return subjects.find((s) => s.slug === slug) ?? null;
+}
+
 // Absolute URL helper for canonical + OG + schema.
 export function absoluteUrl(path = "/"): string {
   const base = business.url.replace(/\/$/, "");
