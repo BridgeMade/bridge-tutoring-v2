@@ -15,9 +15,9 @@ export function Navbar() {
             <Image
               src="/lockup-default.svg"
               alt="Bridge Tutoring Services"
-              width={160}
-              height={40}
-              className="h-8 w-auto"
+              width={217}
+              height={107}
+              className="h-11 w-auto"
               priority
             />
           </Link>

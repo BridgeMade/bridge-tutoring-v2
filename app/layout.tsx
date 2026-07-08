@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Plus_Jakarta_Sans } from "next/font/google";
+import { Geist } from "next/font/google";
 import { Analytics } from "@/components/layout/Analytics";
 import { OrganizationJsonLd } from "@/components/seo/JsonLd";
 import PostHogProvider from "@/components/analytics/PostHogProvider";
@@ -9,14 +9,6 @@ import "./globals.css";
 const geist = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
-});
-
-// Brand typeface (Plus Jakarta Sans). Exposed as a CSS variable so the brand
-// logo SVGs (which reference font-family "PJS") render in the correct font.
-const jakarta = Plus_Jakarta_Sans({
-  variable: "--font-jakarta",
-  subsets: ["latin"],
-  weight: ["400", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
@@ -57,7 +49,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geist.variable} ${jakarta.variable} h-full antialiased`}>
+    <html lang="en" className={`${geist.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-white text-neutral-900">
         <Analytics />
         <OrganizationJsonLd />

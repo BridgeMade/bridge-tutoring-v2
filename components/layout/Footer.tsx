@@ -32,9 +32,9 @@ export function Footer() {
           <Image
             src="/lockup-reversed.svg"
             alt="Bridge Tutoring Services"
-            width={160}
-            height={40}
-            className="h-9 w-auto"
+            width={217}
+            height={107}
+            className="h-12 w-auto"
           />
           <p className="mt-4 text-sm text-neutral-400 leading-relaxed">
             {business.tagline} Hand-picked tutors for in-person lessons in

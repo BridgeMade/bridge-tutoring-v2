@@ -89,12 +89,12 @@ export default function HomePage() {
                 Pretoria · Johannesburg · Online across South Africa
               </span>
               <h1 className="mt-5 text-5xl sm:text-6xl font-black leading-[1.05] tracking-tight text-neutral-900">
-                The right tutor for your child, hand-picked for you.
+                Tutor support that builds confidence and improves results.
               </h1>
               <p className="mt-5 text-lg text-neutral-600 leading-relaxed">
-                Bridge isn&apos;t a marketplace you have to search. Tell us what
-                your child needs and our team matches them with a vetted tutor —
-                in-person or online. You hear back within 24 hours.
+                Bridge isn&apos;t a marketplace to search. Tell us what your
+                child needs, and our team hand-picks a vetted tutor, in person
+                or online. You&apos;ll hear back within 24 hours.
               </p>
               <div className="mt-8 flex flex-col sm:flex-row gap-3">
                 <Link

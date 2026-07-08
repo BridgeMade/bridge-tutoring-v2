@@ -41,9 +41,9 @@ export function SidePanel({ step }: SidePanelProps) {
           <Image
             src="/lockup-reversed.svg"
             alt="Bridge Tutoring Services"
-            width={150}
-            height={38}
-            className="h-9 w-auto"
+            width={217}
+            height={107}
+            className="h-12 w-auto"
           />
         </Link>
         <div className="mt-12">
