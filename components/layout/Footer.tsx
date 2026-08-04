@@ -34,7 +34,7 @@ export function Footer() {
             alt="Bridge Tutoring Services"
             width={217}
             height={107}
-            className="h-12 w-auto"
+            className="h-[60px] w-auto"
           />
           <p className="mt-4 text-sm text-neutral-400 leading-relaxed">
             {business.tagline} Hand-picked tutors for in-person lessons in

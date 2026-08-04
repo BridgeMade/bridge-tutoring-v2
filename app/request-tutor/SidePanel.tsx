@@ -43,7 +43,7 @@ export function SidePanel({ step }: SidePanelProps) {
             alt="Bridge Tutoring Services"
             width={217}
             height={107}
-            className="h-12 w-auto"
+            className="h-[60px] w-auto"
           />
         </Link>
         <div className="mt-12">

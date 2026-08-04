@@ -86,4 +86,34 @@ export function formatTutorApplicationMessage(data: {
   ].join('\n')
 }
 
+export function formatAssessmentBookingMessage(data: {
+  parentName: string
+  phone: string
+  email: string
+  area: string
+  address: string
+  childName: string
+  gradeLevel: string
+  subjects: string[]
+  lessonFormat: string
+  timeOptions: { date: string; time: string }[]
+  notes: string
+}): string {
+  return [
+    'FREE ASSESSMENT REQUESTED',
+    `Parent: ${data.parentName}`,
+    `Phone: ${data.phone}`,
+    `Email: ${data.email}`,
+    `Child: ${data.childName}`,
+    `Grade: ${data.gradeLevel}`,
+    `Subject: ${data.subjects.join(', ')}`,
+    `Format: ${data.lessonFormat}`,
+    `Area: ${data.area}`,
+    `Address: ${data.address || 'N/A (online)'}`,
+    ...data.timeOptions.map((o, i) => `Option ${i + 1}: ${o.date} — ${o.time}`),
+    `Notes: ${data.notes || 'None'}`,
+    `Time: ${new Date().toISOString()}`,
+  ].join('\n')
+}
+
 export { sendMessage }

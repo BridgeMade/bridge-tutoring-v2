@@ -17,7 +17,7 @@ export function Navbar() {
               alt="Bridge Tutoring Services"
               width={217}
               height={107}
-              className="h-11 w-auto"
+              className="h-[55px] w-auto"
               priority
             />
           </Link>

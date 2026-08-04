@@ -86,7 +86,7 @@ export default function HomePage() {
             {/* Text */}
             <div className="lg:flex-1 lg:max-w-[540px] pt-8 lg:pt-0">
               <span className="inline-flex items-center gap-2 rounded-full bg-coral-50 text-coral-600 text-sm font-semibold px-4 py-1.5">
-                Pretoria · Johannesburg · Online across South Africa
+                Online tutoring &amp; in person (Johannesburg, Pretoria)
               </span>
               <h1 className="mt-5 text-5xl sm:text-6xl font-black leading-[1.05] tracking-tight text-neutral-900">
                 Tutor support that builds confidence and improves results.
