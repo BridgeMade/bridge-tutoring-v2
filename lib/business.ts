@@ -39,6 +39,10 @@ export const inPersonAreas: Metro[] = [
       { name: "Queenswood", slug: "queenswood" },
       { name: "Garsfontein", slug: "garsfontein" },
       { name: "Waterkloof", slug: "waterkloof" },
+      { name: "Montana", slug: "montana" },
+      { name: "Irene", slug: "irene" },
+      { name: "Moreleta Park", slug: "moreleta-park" },
+      { name: "Brooklyn", slug: "brooklyn" },
     ],
   },
   {
