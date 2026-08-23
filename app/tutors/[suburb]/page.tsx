@@ -42,6 +42,8 @@ export async function generateMetadata({
 }
 
 // FAQ content, kept here so it feeds both the visible section and the schema.
+// Any suburb-specific FAQs (ctx.content.faqExtra) are appended so they flow
+// into both the visible list and the FAQPage schema.
 function faqsFor(ctx: SuburbContext) {
   return [
     {
@@ -60,6 +62,7 @@ function faqsFor(ctx: SuburbContext) {
       q: `What does it cost to get started?`,
       a: `The first assessment is free, with no obligation. It helps us understand where your child is before we match a tutor.`,
     },
+    ...(ctx.content?.faqExtra ?? []),
   ];
 }
 
@@ -130,10 +133,14 @@ export default async function SuburbPage({
             Tutors in {ctx.name}, hand-picked for your child.
           </h1>
           <p className="mt-5 text-lg text-neutral-600 leading-relaxed max-w-2xl">
-            Looking for a tutor in {ctx.name}? Bridge matches your child with a
-            vetted tutor for lessons at home across {ctx.metro} — or online,
-            anywhere in South Africa. You tell us what your child needs, and we
-            do the matching. You hear back within 24 hours.
+            {ctx.content?.intro ?? (
+              <>
+                Looking for a tutor in {ctx.name}? Bridge matches your child with
+                a vetted tutor for lessons at home across {ctx.metro} — or
+                online, anywhere in South Africa. You tell us what your child
+                needs, and we do the matching. You hear back within 24 hours.
+              </>
+            )}
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-3">
             <Link
@@ -180,6 +187,39 @@ export default async function SuburbPage({
             </div>
           </div>
         </section>
+
+        {/* Local knowledge — unique per-suburb content for E-E-A-T */}
+        {(ctx.content?.schools?.length || ctx.content?.landmarks) && (
+          <section className="py-16 sm:py-20">
+            <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+              <h2 className="text-3xl font-bold text-neutral-900">
+                Tutoring across {ctx.name}
+              </h2>
+              {ctx.content?.landmarks && (
+                <p className="mt-3 text-neutral-600 text-lg leading-relaxed max-w-2xl">
+                  {ctx.content.landmarks}
+                </p>
+              )}
+              {ctx.content?.schools && ctx.content.schools.length > 0 && (
+                <div className="mt-8">
+                  <h3 className="text-lg font-bold text-neutral-900">
+                    Schools we support families around {ctx.name}
+                  </h3>
+                  <ul className="mt-4 flex flex-wrap gap-3">
+                    {ctx.content.schools.map((school) => (
+                      <li
+                        key={school}
+                        className="rounded-full bg-neutral-50 border border-neutral-200 px-5 py-2 text-sm font-medium text-neutral-700"
+                      >
+                        {school}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          </section>
+        )}
 
         {/* Subjects */}
         <section id="subjects" className="py-16 sm:py-20 scroll-mt-20">

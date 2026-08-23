@@ -24,10 +24,23 @@ export const onlineServiceArea = "South Africa";
 // In-person service areas. Each suburb becomes a local SEO landing page
 // (e.g. /tutors/hatfield) targeting "tutor in <suburb>" search intent.
 // `slug` must stay URL-safe, lowercase, hyphenated.
+// Optional per-suburb local content. When present, the suburb landing page
+// renders unique, area-specific sections instead of the generic template —
+// required for E-E-A-T and to avoid thin/doorway content across the set.
+// Never fabricate: schools, landmarks and demand notes must be real facts
+// supplied by the team. Suburbs without `content` fall back to generic copy.
+export type SuburbContent = {
+  intro: string; // 2–3 unique sentences; primary keyword in the first 100 words
+  schools?: string[]; // real, named local schools — strongest local/E-E-A-T signal
+  landmarks?: string; // real area context ("near Menlyn", "the Irene estates")
+  demandNote?: string; // subjects/grades commonly requested locally, if known
+  faqExtra?: { q: string; a: string }[]; // 1–2 suburb-specific FAQs
+};
+
 export type Metro = {
   name: "Pretoria" | "Johannesburg";
   region: string; // grouping label, e.g. "Northern Suburbs"
-  suburbs: { name: string; slug: string }[];
+  suburbs: { name: string; slug: string; content?: SuburbContent }[];
 };
 
 export const inPersonAreas: Metro[] = [
@@ -43,6 +56,7 @@ export const inPersonAreas: Metro[] = [
       { name: "Irene", slug: "irene" },
       { name: "Moreleta Park", slug: "moreleta-park" },
       { name: "Brooklyn", slug: "brooklyn" },
+      { name: "Centurion", slug: "centurion" },
     ],
   },
   {
@@ -81,13 +95,15 @@ export type SuburbContext = {
   slug: string;
   metro: "Pretoria" | "Johannesburg";
   region: string;
+  // Unique local content when the suburb has it; undefined = generic fallback.
+  content?: SuburbContent;
   // Other suburbs in the same region — used for internal links.
   nearby: { name: string; slug: string }[];
 };
 
 // All suburbs flattened — drives generateStaticParams and the sitemap.
 export const allSuburbs: { name: string; slug: string }[] = inPersonAreas.flatMap(
-  (m) => m.suburbs,
+  (m) => m.suburbs.map((s) => ({ name: s.name, slug: s.slug })),
 );
 
 // Resolve a slug to its full context, or null if unknown.
@@ -100,7 +116,10 @@ export function getSuburbBySlug(slug: string): SuburbContext | null {
         slug: match.slug,
         metro: metro.name,
         region: metro.region,
-        nearby: metro.suburbs.filter((s) => s.slug !== slug),
+        content: match.content,
+        nearby: metro.suburbs
+          .filter((s) => s.slug !== slug)
+          .map((s) => ({ name: s.name, slug: s.slug })),
       };
     }
   }
