@@ -10,6 +10,9 @@ export const business = {
     "Bridge matches your child with a hand-picked tutor and builds a learning programme around how they actually learn. Online tutoring across South Africa, plus in-person tutoring in Pretoria and Johannesburg.",
   url: "https://bridgetutoring.co.za",
   email: "support@bridgetutoring.co.za",
+  // Display form for humans; `phoneE164` is the tel:/schema form (+27, no leading 0).
+  phone: "061 536 7686",
+  phoneE164: "+27615367686",
   country: "ZA",
   // Logo for Organization schema (absolute URL resolved at use site).
   logo: "/app-icon-primary.png",

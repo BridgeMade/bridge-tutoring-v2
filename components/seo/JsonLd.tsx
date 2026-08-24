@@ -13,6 +13,7 @@ export function OrganizationJsonLd() {
     slogan: business.tagline,
     url: business.url,
     email: business.email,
+    telephone: business.phoneE164,
     logo: absoluteUrl(business.logo),
     image: absoluteUrl(business.logo),
     description: business.description,

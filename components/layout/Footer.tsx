@@ -133,6 +133,11 @@ export function Footer() {
                   Contact us
                 </a>
               </li>
+              <li>
+                <a href={`tel:${business.phoneE164}`} className={linkClass}>
+                  {business.phone}
+                </a>
+              </li>
             </ul>
           </div>
         </div>
