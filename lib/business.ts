@@ -399,6 +399,13 @@ export const subjects: Subject[] = [
     blurb:
       "Theory that's easy to lose marks on without good structure. A tutor who helps your child learn it well and write it clearly.",
   },
+  {
+    name: "isiZulu",
+    slug: "isizulu",
+    formValue: "isiZulu",
+    blurb:
+      "Home language or first additional, we match a tutor who makes isiZulu approachable — building your child's vocabulary, comprehension and the confidence to use it.",
+  },
 ];
 
 export const allSubjects = subjects;
