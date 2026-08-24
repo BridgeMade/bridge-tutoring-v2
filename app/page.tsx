@@ -135,7 +135,7 @@ export default function HomePage() {
               </svg>
 
               <Image
-                src="/hero image 2.png"
+                src="/hero-2.webp"
                 alt="Smiling student"
                 width={460}
                 height={520}
@@ -150,7 +150,7 @@ export default function HomePage() {
                 <path d="M390,220 C415,275 420,345 385,395 C350,445 280,465 215,460 C150,455 85,428 52,378 C19,328 18,255 38,192 C58,129 100,76 158,50 C216,24 290,24 348,58 C406,92 365,165 390,220Z" />
               </svg>
               <Image
-                src="/hero image 2.png"
+                src="/hero-2.webp"
                 alt="Smiling student"
                 width={280}
                 height={280}
@@ -374,7 +374,7 @@ export default function HomePage() {
           {/* Image — full bleed left half */}
           <div className="relative w-full lg:w-1/2 h-72 lg:h-auto">
             <Image
-              src="/Tutor hero Image 1.png"
+              src="/tutor-hero-1.webp"
               alt="A Bridge tutor working with a student"
               fill
               sizes="(min-width: 1024px) 50vw, 100vw"
