@@ -40,6 +40,7 @@ export const SUBJECT_OPTIONS = [
   "Life Sciences",
   "English",
   "Afrikaans",
+  "isiZulu",
   "Accounting",
   "Economics",
   "Geography",

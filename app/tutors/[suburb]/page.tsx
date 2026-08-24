@@ -189,7 +189,9 @@ export default async function SuburbPage({
         </section>
 
         {/* Local knowledge — unique per-suburb content for E-E-A-T */}
-        {(ctx.content?.schools?.length || ctx.content?.landmarks) && (
+        {(ctx.content?.schools?.length ||
+          ctx.content?.landmarks ||
+          ctx.content?.demandNote) && (
           <section className="py-16 sm:py-20">
             <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
               <h2 className="text-3xl font-bold text-neutral-900">
@@ -198,6 +200,11 @@ export default async function SuburbPage({
               {ctx.content?.landmarks && (
                 <p className="mt-3 text-neutral-600 text-lg leading-relaxed max-w-2xl">
                   {ctx.content.landmarks}
+                </p>
+              )}
+              {ctx.content?.demandNote && (
+                <p className="mt-4 text-neutral-600 text-lg leading-relaxed max-w-2xl">
+                  {ctx.content.demandNote}
                 </p>
               )}
               {ctx.content?.schools && ctx.content.schools.length > 0 && (

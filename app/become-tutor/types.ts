@@ -25,6 +25,7 @@ export const TUTOR_SUBJECT_OPTIONS = [
   "Life Sciences",
   "English",
   "Afrikaans",
+  "isiZulu",
   "Accounting",
   "Economics",
   "Geography",

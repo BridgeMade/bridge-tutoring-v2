@@ -48,25 +48,216 @@ export const inPersonAreas: Metro[] = [
     name: "Pretoria",
     region: "Pretoria",
     suburbs: [
-      { name: "Hatfield", slug: "hatfield" },
+      {
+        name: "Hatfield",
+        slug: "hatfield",
+        content: {
+          intro:
+            "Looking for a tutor in Hatfield? It's one of Pretoria's busiest academic hubs — built around the University of Pretoria's main campus, the Gautrain station, and a cluster of the city's best-known schools. Bridge matches your child with a vetted tutor for lessons at home in Hatfield, or online anywhere in South Africa. You tell us what your child needs, and we do the matching.",
+          landmarks:
+            "Hatfield sits at the heart of academic Pretoria — anchored by the University of Pretoria's Hatfield campus and the LC de Villiers sports grounds, well connected by the Hatfield Gautrain station and A Re Yeng routes, and close to Loftus Versfeld, the home of the Blue Bulls. Families here often want tutoring that keeps pace with the university-focused schools around them.",
+          schools: [
+            "Pretoria Boys High School",
+            "Pretoria High School for Girls",
+            "St Alban's College",
+            "Hatfield Christian School",
+          ],
+          demandNote:
+            "Around Hatfield we see the most demand across Grades 8–12 — core high-school preparation for university exemption — with steady support in Grades 4–7 too. Mathematics, Mathematical Literacy, Physical Sciences, Life Sciences, Accounting and English Home Language come up most often.",
+          faqExtra: [
+            {
+              q: "Can a tutor help my child prepare for university exemption in Hatfield?",
+              a: "Yes. Many families around Hatfield's schools are working towards a strong matric and university entry. We match your child with a tutor who knows the CAPS and IEB requirements and can focus on the subjects that carry the most weight for exemption.",
+            },
+          ],
+        },
+      },
       { name: "Queenswood", slug: "queenswood" },
       { name: "Garsfontein", slug: "garsfontein" },
       { name: "Waterkloof", slug: "waterkloof" },
-      { name: "Montana", slug: "montana" },
+      {
+        name: "Montana",
+        slug: "montana",
+        content: {
+          intro:
+            "Looking for a tutor in Montana? This established Pretoria North suburb, along the Zambezi corridor, has a strong Afrikaans heritage and a fast-growing mix of families across Montana Park, Doornpoort and Annlin. Bridge matches your child with a vetted tutor for lessons at home in Montana, or online anywhere in South Africa, in Afrikaans or English.",
+          landmarks:
+            "Montana runs along Sefako Makgatho (Zambezi) Drive in Pretoria North, anchored by the Kolonnade shopping centres and Netcare Montana Hospital, with the Wonderboom Nature Reserve and Magaliesberg ridge to the south. It's a traditionally Afrikaans area now diversifying quickly, so families often need tutoring in either Afrikaans or English.",
+          schools: [
+            "Hoërskool Montana",
+            "Laerskool Montana",
+            "Curro Academy Pretoria",
+            "Wonderboom Hoërskool",
+            "Laerskool Stephanus Roos",
+          ],
+          demandNote:
+            "Around Montana we see the most demand in Grades 10–12 — matric preparation and university exemption — with steady foundational support in Grades 4–7. Requests span both mediums: Mathematics (Wiskunde), Physical Sciences, Life Sciences, Accounting and Business Studies, plus Afrikaans and English language support.",
+          faqExtra: [
+            {
+              q: "Can my child be tutored in Afrikaans in Montana?",
+              a: "Yes. Montana has a strong base of Afrikaans-medium schools, so we regularly match tutors who teach in Afrikaans (Wiskunde, Fisiese Wetenskappe, Lewenswetenskappe and more) as well as in English. Tell us which your child needs and we match accordingly.",
+            },
+          ],
+        },
+      },
       { name: "Irene", slug: "irene" },
-      { name: "Moreleta Park", slug: "moreleta-park" },
+      {
+        name: "Moreleta Park",
+        slug: "moreleta-park",
+        content: {
+          intro:
+            "Looking for a tutor in Moreleta Park? This is the heart of Pretoria East — a family-dense suburb of security estates and golf developments, surrounded by some of the city's best-known schools. Bridge matches your child with a vetted tutor for lessons at home in Moreleta Park, or online anywhere in South Africa, in Afrikaans or English to suit your family.",
+          landmarks:
+            "Moreleta Park sits in the middle of Pretoria East, anchored by the Moreletapark church, the Moreleta Kloof Nature Reserve and shopping hubs like Woodlands Boulevard and Parkview. It's ringed by high-performing schools, and the academic and sporting rivalries between them mean many local families invest early in one-on-one support.",
+          schools: [
+            "Woodhill College",
+            "Hoërskool Garsfontein",
+            "Hoërskool Waterkloof",
+            "Eastside Primary School",
+            "Laerskool Constantiapark",
+          ],
+          demandNote:
+            "Around Moreleta Park we see the most demand in Grades 10–12 — matric preparation and university APS points — with strong demand in Grades 8–9 and steady foundational support in Grades 4–7. Requests span both mediums: Mathematics (Wiskunde), Physical Sciences, Life Sciences, Accounting, Economics, and Afrikaans and English language support.",
+          faqExtra: [
+            {
+              q: "Do you have tutors for the Pretoria East schools near Moreleta Park?",
+              a: "Yes. We regularly support families around schools like Woodhill College, Hoërskool Garsfontein and Hoërskool Waterkloof. We match your child with a tutor who knows the CAPS or IEB requirements and can work in Afrikaans or English, at home in Moreleta Park or online.",
+            },
+          ],
+        },
+      },
       { name: "Brooklyn", slug: "brooklyn" },
-      { name: "Centurion", slug: "centurion" },
+      {
+        name: "Centurion",
+        slug: "centurion",
+        content: {
+          intro:
+            "Looking for a tutor in Centurion? From the estates around Midstream, Copperleaf and Thatchfield to the established suburbs of Eldoraigne and Lyttelton, Centurion is home to a busy mix of Afrikaans and English schools, both public and private. Bridge matches your child with a vetted tutor for lessons at home in Centurion, or online anywhere in South Africa — in the language and curriculum that suits them.",
+          landmarks:
+            "Centurion runs along the N1 and N14 between Pretoria and Johannesburg, built around Centurion Mall, SuperSport Park and the Gautrain station, with growing estate hubs like Midstream, Copperleaf and Heritage Hill. It's one of the few areas where strong Afrikaans-medium and English-medium schools sit side by side, so families often need a tutor who can work in the right language and curriculum.",
+          schools: [
+            "Sutherland High School",
+            "Hoërskool Centurion",
+            "Cornwall Hill College",
+            "Curro Thatchfield",
+            "Abbotts College Centurion",
+          ],
+          demandNote:
+            "Around Centurion we see the most demand in Grades 10–12 — matric preparation and building APS points for university — with strong momentum in Grades 8–9 and steady support in Grades 4–7. Requests span both mediums: Mathematics (Wiskunde), Physical Sciences, Life Sciences, Accounting (Rekeningkunde) and Business Studies, plus Afrikaans and English language support.",
+          faqExtra: [
+            {
+              q: "Can my child be tutored in Afrikaans in Centurion?",
+              a: "Yes. Centurion has a high number of Afrikaans-medium schools, so we regularly match tutors who teach in Afrikaans (Wiskunde, Fisiese Wetenskappe, Lewenswetenskappe and more) as well as in English. Tell us which your child needs and we match accordingly.",
+            },
+          ],
+        },
+      },
     ],
   },
   {
     name: "Johannesburg",
     region: "Northern Suburbs",
     suburbs: [
-      { name: "Sandton", slug: "sandton" },
-      { name: "Midrand", slug: "midrand" },
-      { name: "Fourways", slug: "fourways" },
-      { name: "Randburg", slug: "randburg" },
+      {
+        name: "Sandton",
+        slug: "sandton",
+        content: {
+          intro:
+            "Looking for a tutor in Sandton? At the centre of Johannesburg's business district, Sandton and its suburbs — Bryanston, Morningside, Rivonia and Sandown — are home to many of the city's leading independent schools and busy professional families. Bridge matches your child with a vetted tutor for lessons at home in Sandton, or online anywhere in South Africa.",
+          landmarks:
+            "Sandton is anchored by Sandton City and Nelson Mandela Square, the Sandton Gautrain station, and the corporate corridors of Bryanston, Morningside and Rivonia. With demanding work schedules the norm, many families here prefer a tutor who travels to their home or works with their child online, around the school and work day.",
+          schools: [
+            "St Stithians College",
+            "Crawford International Sandton",
+            "Bryanston High School",
+            "Redhill School",
+            "St David's Marist Inanda",
+          ],
+          demandNote:
+            "Around Sandton we see heavy demand in Grades 10–12 — matric, university exemption and applications abroad — with strong demand in Grades 8–9 and Grades 1–7. Requests include Mathematics, Physical Sciences, Life Sciences, Information Technology, Accounting, Economics, Business Studies, and language support in English, Afrikaans and isiZulu.",
+          faqExtra: [
+            {
+              q: "Do you have tutors for the IEB and independent schools in Sandton?",
+              a: "Yes. Sandton has a high concentration of independent schools running IEB and international curricula. We match your child with a tutor who understands the demands of their school and can work at home or online, around a busy family schedule.",
+            },
+          ],
+        },
+      },
+      {
+        name: "Midrand",
+        slug: "midrand",
+        content: {
+          intro:
+            "Looking for a tutor in Midrand? Sitting between Johannesburg and Pretoria around Waterfall City and the Gautrain, Midrand is a fast-growing area of security estates and a high concentration of independent schools. Bridge matches your child with a vetted tutor for lessons at home in Midrand, or online anywhere in South Africa.",
+          landmarks:
+            "Midrand is anchored by the Mall of Africa and Waterfall City, the Midrand Gautrain station off the K101, and the Kyalami circuit along the R55. With so many families living in gated estates like Waterfall, Blue Hills and Carlswald, home visits and online lessons are usually the easiest way to fit tutoring around busy commuting schedules.",
+          schools: [
+            "Curro Waterfall",
+            "Nova Pioneer Midrand",
+            "Reddford House Blue Hills",
+            "Midrand High School",
+            "Carlswald Preparatory School",
+          ],
+          demandNote:
+            "Around Midrand we see heavy demand in Grades 1–7 — foundational support for the many young families in the estates — and in Grades 10–12 for matric and university exemption. Requests include Mathematics, Physical Sciences, Life Sciences, Information Technology and CAT, Accounting, Business Studies, Economics, and language support in English, Afrikaans and isiZulu.",
+          faqExtra: [
+            {
+              q: "Do you tutor children at the private schools around Midrand?",
+              a: "Yes. Midrand has a high concentration of independent schools — Curro, Nova Pioneer, Reddford House and more — across IEB, CAPS and Cambridge. We match your child with a tutor who fits their school's curriculum and the way they're taught, at home or online.",
+            },
+          ],
+        },
+      },
+      {
+        name: "Fourways",
+        slug: "fourways",
+        content: {
+          intro:
+            "Looking for a tutor in Fourways? This fast-growing Johannesburg North node is built around large gated estates — Steyn City, Dainfern, Helderfontein and Lonehill — and a wide mix of independent and public schools. Bridge matches your child with a vetted tutor for lessons at home in Fourways, or online anywhere in South Africa.",
+          landmarks:
+            "Fourways centres on Montecasino and Fourways Mall at the William Nicol and Witkoppen crossroads, surrounded by estate communities like Steyn City, Dainfern and Cedar Lakes. With busy arterials like William Nicol and Witkoppen often congested, many local families prefer a tutor who comes to their estate or works with their child online.",
+          schools: [
+            "Dainfern College",
+            "Reddam House Helderfontein",
+            "Fourways High School",
+            "Steyn City School",
+            "HeronBridge College",
+          ],
+          demandNote:
+            "Around Fourways we see high demand in Grades 10–12 — matric preparation and university exemption — alongside heavy demand for foundational support in Grades 1–7. Requests include Mathematics, Physical Sciences, Life Sciences, Information Technology, Accounting, Business Studies, Economics, and language support in English, Afrikaans and isiZulu.",
+          faqExtra: [
+            {
+              q: "Do you tutor in the estates around Fourways?",
+              a: "Yes. We regularly support families in estates like Steyn City, Dainfern, Helderfontein and Lonehill. Tell us where you are and we match a tutor who can come to your home within the estate, or work with your child online.",
+            },
+          ],
+        },
+      },
+      {
+        name: "Randburg",
+        slug: "randburg",
+        content: {
+          intro:
+            "Looking for a tutor in Randburg? This large Johannesburg North area spreads across distinct neighbourhoods — Randpark Ridge, Ferndale, Fontainebleau, Fairland and Robin Hills — each with its own schools. Bridge matches your child with a vetted tutor for lessons at home in Randburg, or online anywhere in South Africa, in English or Afrikaans.",
+          landmarks:
+            "Randburg centres on Cresta Shopping Centre and the Malibongwe/Republic Road crossroads, with MultiChoice City in Bordeaux and the green expanse of Delta Park to the south. Because it's really a cluster of sub-suburbs rather than one centre, many families prefer a tutor who comes to them at home.",
+          schools: [
+            "Rand Park High School",
+            "Hoërskool Randburg",
+            "Curro Aurora High School",
+            "Trinityhouse Randpark Ridge",
+            "Ferndale High School",
+          ],
+          demandNote:
+            "Around Randburg we see the most demand in Grades 10–12 — matric preparation and university APS points — with strong movement in Grades 8–9 and steady foundational support in Grades 4–7. Requests include Mathematics, Physical Sciences, Life Sciences, Accounting, Business Studies, Economics, and English and Afrikaans language support.",
+          faqExtra: [
+            {
+              q: "Do you tutor across the different Randburg suburbs?",
+              a: "Yes. Randburg covers a wide spread — from Randpark Ridge and Northriding to Ferndale, Fairland and Fontainebleau. Tell us where you are and we match a tutor who can come to your home, or work with your child online.",
+            },
+          ],
+        },
+      },
       { name: "Edenvale", slug: "edenvale" },
       { name: "Kempton Park", slug: "kempton-park" },
     ],
